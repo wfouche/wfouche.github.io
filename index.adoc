@@ -57,7 +57,7 @@ image::images/2015-12-Asciidoc/AsciidocFX.png[]
 
 === SmartGit - push changes back to Github (publish blog)
 
-Add (Stage) files index.adoc and index.html in SmartGit and then push then them to Github.
+Add (Stage) files index.adoc and index.html in SmartGit and then push them to Github.
 
 image::images/2015-12-Asciidoc/SmartGit.png[]
 

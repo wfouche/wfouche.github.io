@@ -38,6 +38,9 @@ SmartGit is a user-friendly front-end to Git, and can be used with Github and ot
 Create a file called index.adoc in AsciidocFX.
 
 ----
+//
+// file: index.adoc
+//
 = Werner's Blog
 :sectnums:
 :toc: left

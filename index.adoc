@@ -61,6 +61,6 @@ Add (Stage) files index.adoc and index.html in SmartGit and then push then them 
 
 image::images/2015-12-Asciidoc/SmartGit.png[]
 
-Go to your specific Githug Pages URL (for example http://wfouche.github.io) to view your latest blog updates.
+Go to your specific Github Pages URL (for example http://wfouche.github.io) to view your latest blog updates.
 
 

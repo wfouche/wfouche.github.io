@@ -76,3 +76,18 @@ image::images/2015-12-Asciidoc/SmartGit.png[]
 Go to your specific Github Pages URL (for example http://wfouche.github.io) to view your latest blog updates. File *index.html* will be displayed by default.
 
 image::images/2015-12-Asciidoc/BlogWebPage.png[]
+
+=== Additional information on Asciidoc
+
+* http://mojavelinux.github.io/decks/discover-zen-writing-asciidoc/
+* http://asciidoctor.org/docs/asciidoc-writers-guide/
+* http://asciidoctor.org/docs/asciidoc-syntax-quick-reference/
+* https://leanpub.com/awesomeasciidoctornotebook/read
+* http://asciidoctor.org/news/2014/08/21/asciidoctorj-1-5-0-released/
+* https://bintray.com/asciidoctor/maven/asciidoctorj/view
+* http://www.asciidocfx.com/
+** http://www.asciidocfx.com/#trueplantuml-extension
+** http://www.asciidocfx.com/#truejavafx-charts-extension
+** http://www.asciidocfx.com/#trueditaa-extension
+** https://github.com/asciidocfx/AsciidocFX/releases
+

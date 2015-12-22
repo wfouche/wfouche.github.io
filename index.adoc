@@ -33,9 +33,13 @@ This new repository will be accessible globally as http://__username__.github.io
 
 SmartGit is a user-friendly front-end to Git, and can be used with Github and other Git hosting providers. SmartGit are for people who just wants to get on with the coding or editing task at hand without getting entangled in the intricacies of the Git command-line.
 
+From the SmartGit UI, select Repository / Clone to fetch the files in the Git repository (replace *username* with your specific Github username):
+
+* https://github.com/username/username.github.io
+
 === AsciidocFX - create blog files index.adoc and index.html
 
-Create a file called *index.adoc* in AsciidocFX.
+Create a file called *index.adoc* with AsciidocFX in the local Git folder.
 
 ----
 //
@@ -67,6 +71,8 @@ Add (Stage) files index.adoc and index.html in SmartGit and then push them to Gi
 
 image::images/2015-12-Asciidoc/SmartGit.png[]
 
-Go to your specific Github Pages URL (for example http://wfouche.github.io) to view your latest blog updates.
+=== SmartGit - push changes back to Github (publish blog)
 
+Go to your specific Github Pages URL (for example http://wfouche.github.io) to view your latest blog updates. File *index.html* will be displayed by default.
 
+image::images/2015-12-Asciidoc/BlogWebPage.png[]

@@ -90,4 +90,6 @@ image::images/2015-12-Asciidoc/BlogWebPage.png[]
 ** http://www.asciidocfx.com/#truejavafx-charts-extension
 ** http://www.asciidocfx.com/#trueditaa-extension
 ** https://github.com/asciidocfx/AsciidocFX/releases
-
+* http://plantuml.com/
+* http://www.graphviz.org/
+* https://www.gliffy.com/

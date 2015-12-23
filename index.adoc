@@ -71,13 +71,13 @@ Add (Stage) files index.adoc and index.html in SmartGit and then push them to Gi
 
 image::images/2015-12-Asciidoc/SmartGit.png[]
 
-=== SmartGit - push changes back to Github (publish blog)
+=== View blog
 
 Go to your specific Github Pages URL (for example http://wfouche.github.io) to view your latest blog updates. File *index.html* will be displayed by default.
 
 image::images/2015-12-Asciidoc/BlogWebPage.png[]
 
-=== Additional information on Asciidoc
+=== Additional information
 
 * http://mojavelinux.github.io/decks/discover-zen-writing-asciidoc/
 * http://asciidoctor.org/docs/asciidoc-writers-guide/

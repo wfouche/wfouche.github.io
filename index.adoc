@@ -23,13 +23,13 @@ The rest of this article describes how to create and manage a blog using GitHub,
 * http://www.syntevo.com/smartgit/[SmartGit 7.0.4] - use SmartGit to push changes from your laptop to Github.
 * https://github.com/asciidocfx/AsciidocFX/releases[AsciidocFX 1.4.5] - use this authoring tool to create and edit the blog document.
 
-=== GitHub Pages - create repository
+=== Create repository
 
 Create a new repository at Github called __username__.github.io where _username_ is your username on Github. See https://pages.github.com for detailed instructions on how to accomplish this step.
 
 This new repository will be accessible globally as http://__username__.github.io. For example my Github login is __wfouche__ and hence this blog is hosted at http://wfouche.github.io
 
-=== SmartGit - clone repository
+=== Clone repository
 
 SmartGit is a user-friendly front-end to Git, and can be used with Github and other Git hosting providers. SmartGit are for people who just wants to get on with the coding or editing task at hand without getting entangled in the intricacies of the Git command-line.
 
@@ -37,7 +37,7 @@ From the SmartGit UI, select Repository / Clone to fetch the files in the Git re
 
 * https://github.com/username/username.github.io
 
-=== AsciidocFX - create blog files index.adoc and index.html
+=== Create blog files index.adoc and index.html
 
 Create a file called *index.adoc* with AsciidocFX in the local Git folder.
 
@@ -65,7 +65,7 @@ From within AsciidocFX, click on *HTML* (top right) and then select *Save*. File
 
 image::images/2015-12-Asciidoc/AsciidocFX.png[]
 
-=== SmartGit - push changes back to Github (publish blog)
+=== Publish blog
 
 Add (Stage) files index.adoc and index.html in SmartGit and then push them to Github.
 

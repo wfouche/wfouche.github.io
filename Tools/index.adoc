@@ -21,48 +21,51 @@
 
 == Jython
 
+=== General
 * http://www.jython.org/
+
+=== Development
 * http://fwierzbicki.blogspot.fi/
 * http://python.6.x6.nabble.com/jython-dev-f1778516.html
 * https://hg.python.org/jython
 
 == Python
 
-General::
+=== General
   * https://www.python.org/
   * https://pypi.python.org/pypi
 
-Twisted::
+=== Twisted
   * https://twistedmatrix.com/trac/
   
-SQLAlchemy::
+=== SQLAlchemy
   * http://www.sqlalchemy.org/
 
-Microsoft Visual C++ Compiler for Python 2.7::
+=== Microsoft Visual C++ Compiler for Python 2.7
   * http://www.microsoft.com/en-za/download/details.aspx?id=44266
   * http://stackoverflow.com/questions/26140192/microsoft-visual-c-compiler-for-python-2-7
   
 == Java
 
-General::
+=== General
   * http://www.oracle.com/technetwork/java/javase/downloads/index.html
   
-JDBC::
+=== JDBC
   * http://jtds.sourceforge.net/
   * https://msdn.microsoft.com/en-us/sqlserver/aa937724.aspx
   * http://blogs.msdn.com/b/jdbcteam/
   
-NIO::
+=== NIO
   * http://netty.io/
   * https://mina.apache.org/mina-project/index.html
   * https://grizzly.java.net/
   * http://camel.apache.org/
 
-Lcc-Win32::
+=== Lcc-Win32
   * http://www.cs.virginia.edu/~lcc-win32/
   * http://www.cs.virginia.edu/~lcc-win32/README
   
-Misc::
+=== Misc
   * http://openjdk.java.net/projects/code-tools/jmh/
 
 == AsciidocFX
@@ -98,3 +101,10 @@ My Issues::
 
 == AsciidocFX
 ----
+
+== Windows
+
+=== Choco
+
+* https://chocolatey.org/
+* https://github.com/chocolatey/choco/commits/master

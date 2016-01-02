@@ -3,5 +3,5 @@
 == Site Links
 
 * http://wfouche.github.io/Blog[Blog]
-* http://wfouche.github.io/Blog[Tools]
-* http://wfouche.github.io/Blog[Performance]
+* http://wfouche.github.io/Performance[Performance]
+* http://wfouche.github.io/Tools[Tools]

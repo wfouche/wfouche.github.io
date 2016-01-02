@@ -1,7 +1,7 @@
 //
 // file: index.adoc
 //
-= Werner's Blog
+= AsciiDoc and Githug Pages
 :sectnums:
 :toc: left
 :toclevels: 3
@@ -62,19 +62,19 @@ Although 2015 is quickly coming to and end, I look back on it fondly. It was a g
 From within AsciidocFX, click on *HTML* (top right) and then select *Save*. File *index.html* will be created in the same folder as where file *index.adoc* reside.
 
 
-image::images/2015-12-Asciidoc/AsciidocFX.png[]
+image::AsciidocFX.png[]
 
 === Publish blog
 
 Add (Stage) files index.adoc and index.html in SmartGit and then push them to Github.
 
-image::images/2015-12-Asciidoc/SmartGit.png[]
+image::SmartGit.png[]
 
 === View blog
 
 Go to your specific Github Pages URL (for example http://wfouche.github.io) to view your latest blog updates. File *index.html* will be displayed by default.
 
-image::images/2015-12-Asciidoc/BlogWebPage.png[]
+image::BlogWebPage.png[]
 
 === Additional information
 

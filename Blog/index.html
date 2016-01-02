@@ -5,7 +5,7 @@
 <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 1.5.4-dev">
-<title>Werner&#8217;s Blog</title>
+<title>Blog Articles</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
 /*! normalize.css v2.1.2 | MIT License | git.io/normalize */
@@ -2131,20 +2131,11 @@ p {
 </head>
 <body class="article toc2 toc-left">
 <div id="header">
-<h1>Werner&#8217;s Blog</h1>
+<h1>Blog Articles</h1>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
-<li><a href="#trueblogging-with-github-pages-and-asciidoc">1. Blogging with Github Pages and Asciidoc</a>
-<ul class="sectlevel2">
-<li><a href="#truecreate-repository">1.1. Create repository</a></li>
-<li><a href="#trueclone-repository">1.2. Clone repository</a></li>
-<li><a href="#truecreate-blog-files">1.3. Create blog files</a></li>
-<li><a href="#truepublish-blog">1.4. Publish blog</a></li>
-<li><a href="#trueview-blog">1.5. View blog</a></li>
-<li><a href="#trueadditional-information">1.6. Additional information</a></li>
-</ul>
-</li>
+<li><a href="#trueblogging-with-github-pages-and-asciidoc">1. Blogging with Github Pages and Asciidoc</a></li>
 </ul>
 </div>
 </div>
@@ -2153,169 +2144,14 @@ p {
 <h2 id="trueblogging-with-github-pages-and-asciidoc"><a class="anchor" href="#trueblogging-with-github-pages-and-asciidoc"></a>1. Blogging with Github Pages and Asciidoc</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p><strong>2015-12-22</strong></p>
-</div>
-<div class="paragraph">
-<p>Although 2015 is quickly coming to and end, I look back on it fondly. It was a great year during which I learned a lot and discovered a few sofware gems, one of which is <a href="https://en.wikipedia.org/wiki/AsciiDoc">Asciidoc</a>. When you use Asciidoc to create documents you are <a href="https://medium.com/@chacon/living-the-future-of-technical-writing-2f368bd0a272#.ivrqucdon">Living the Future of Technical Writing</a>!</p>
-</div>
-<div class="paragraph">
-<p>During the last six months, I&#8217;ve written many documents using Asciidoc. Although Asciidoc documents can be written using any text editor, I&#8217;ve come to rely on <a href="http://www.asciidocfx.com">AsciidocFX</a> as my writer&#8217;s tool of choice. Being one of the <a href="https://community.oracle.com/docs/DOC-949972#wfp">Duke&#8217;s Choice Award 2015</a> winners just solidifies AsciidocFX&#8217;s position as one of the premier Asciidoc authoring tools currently available.</p>
-</div>
-<div class="paragraph">
-<p>The rest of this article describes how to create and manage a blog using GitHub, SmartGit, and Asciidoc:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><a href="https://pages.github.com/">Github Pages</a> - host the Asciidoc text files on Github.</p>
-</li>
-<li>
-<p><a href="http://www.syntevo.com/smartgit/">SmartGit 7.0.4</a> - use SmartGit to push changes from your laptop to Github.</p>
-</li>
-<li>
-<p><a href="https://github.com/asciidocfx/AsciidocFX/releases">AsciidocFX 1.4.5</a> - use this authoring tool to create and edit the blog document.</p>
-</li>
-</ul>
-</div>
-<div class="sect2">
-<h3 id="truecreate-repository"><a class="anchor" href="#truecreate-repository"></a>1.1. Create repository</h3>
-<div class="paragraph">
-<p>Create a new repository at Github called <em>username</em>.github.io where <em>username</em> is your username on Github. See <a href="https://pages.github.com" class="bare">https://pages.github.com</a> for detailed instructions on how to accomplish this step.</p>
-</div>
-<div class="paragraph">
-<p>This new repository will be accessible globally as http://<em>username</em>.github.io. For example my Github login is <em>wfouche</em> and hence this blog is hosted at <a href="http://wfouche.github.io" class="bare">http://wfouche.github.io</a></p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="trueclone-repository"><a class="anchor" href="#trueclone-repository"></a>1.2. Clone repository</h3>
-<div class="paragraph">
-<p>SmartGit is a user-friendly front-end to Git, and can be used with Github and other Git hosting providers. SmartGit are for people who just wants to get on with the coding or editing task at hand without getting entangled in the intricacies of the Git command-line.</p>
-</div>
-<div class="paragraph">
-<p>From the SmartGit UI, select Repository / Clone to fetch the files in the Git repository (replace <strong>username</strong> with your specific Github username):</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><a href="https://github.com/username/username.github.io" class="bare">https://github.com/username/username.github.io</a></p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="truecreate-blog-files"><a class="anchor" href="#truecreate-blog-files"></a>1.3. Create blog files</h3>
-<div class="paragraph">
-<p>Create a file called <strong>index.adoc</strong> with AsciidocFX in the local Git folder.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre>//
-// file: index.adoc
-//
-= Werner's Blog
-:sectnums:
-:toc: left
-:toclevels: 3
-
-:toc!:
-
-== Blogging with Github Pages and Asciidoc
-
-*2015-12-22*
-
-Although 2015 is quickly coming to and end, I look back on it fondly. It was a great year during which I learned a lot and discovered a few sofware gems, one of which is https://en.wikipedia.org/wiki/AsciiDoc[Asciidoc]. When you use Asciidoc to create documents you are https://medium.com/@chacon/living-the-future-of-technical-writing-2f368bd0a272#.ivrqucdon[Living the Future of Technical Writing]!</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>From within AsciidocFX, click on <strong>HTML</strong> (top right) and then select <strong>Save</strong>. File <strong>index.html</strong> will be created in the same folder as where file <strong>index.adoc</strong> reside.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/2015-12-Asciidoc/AsciidocFX.png" alt="AsciidocFX.png">
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="truepublish-blog"><a class="anchor" href="#truepublish-blog"></a>1.4. Publish blog</h3>
-<div class="paragraph">
-<p>Add (Stage) files index.adoc and index.html in SmartGit and then push them to Github.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/2015-12-Asciidoc/SmartGit.png" alt="SmartGit.png">
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="trueview-blog"><a class="anchor" href="#trueview-blog"></a>1.5. View blog</h3>
-<div class="paragraph">
-<p>Go to your specific Github Pages URL (for example <a href="http://wfouche.github.io" class="bare">http://wfouche.github.io</a>) to view your latest blog updates. File <strong>index.html</strong> will be displayed by default.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/2015-12-Asciidoc/BlogWebPage.png" alt="BlogWebPage.png">
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="trueadditional-information"><a class="anchor" href="#trueadditional-information"></a>1.6. Additional information</h3>
-<div class="ulist">
-<ul>
-<li>
-<p><a href="http://mojavelinux.github.io/decks/discover-zen-writing-asciidoc/" class="bare">http://mojavelinux.github.io/decks/discover-zen-writing-asciidoc/</a></p>
-</li>
-<li>
-<p><a href="http://asciidoctor.org/docs/asciidoc-writers-guide/" class="bare">http://asciidoctor.org/docs/asciidoc-writers-guide/</a></p>
-</li>
-<li>
-<p><a href="http://asciidoctor.org/docs/asciidoc-syntax-quick-reference/" class="bare">http://asciidoctor.org/docs/asciidoc-syntax-quick-reference/</a></p>
-</li>
-<li>
-<p><a href="https://leanpub.com/awesomeasciidoctornotebook/read" class="bare">https://leanpub.com/awesomeasciidoctornotebook/read</a></p>
-</li>
-<li>
-<p><a href="http://asciidoctor.org/news/2014/08/21/asciidoctorj-1-5-0-released/" class="bare">http://asciidoctor.org/news/2014/08/21/asciidoctorj-1-5-0-released/</a></p>
-</li>
-<li>
-<p><a href="https://bintray.com/asciidoctor/maven/asciidoctorj/view" class="bare">https://bintray.com/asciidoctor/maven/asciidoctorj/view</a></p>
-</li>
-<li>
-<p><a href="http://www.asciidocfx.com/" class="bare">http://www.asciidocfx.com/</a></p>
-<div class="ulist">
-<ul>
-<li>
-<p><a href="http://www.asciidocfx.com/#trueplantuml-extension" class="bare">http://www.asciidocfx.com/#trueplantuml-extension</a></p>
-</li>
-<li>
-<p><a href="http://www.asciidocfx.com/#truejavafx-charts-extension" class="bare">http://www.asciidocfx.com/#truejavafx-charts-extension</a></p>
-</li>
-<li>
-<p><a href="http://www.asciidocfx.com/#trueditaa-extension" class="bare">http://www.asciidocfx.com/#trueditaa-extension</a></p>
-</li>
-<li>
-<p><a href="https://github.com/asciidocfx/AsciidocFX/releases" class="bare">https://github.com/asciidocfx/AsciidocFX/releases</a></p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><a href="http://plantuml.com/" class="bare">http://plantuml.com/</a></p>
-</li>
-<li>
-<p><a href="http://www.graphviz.org/" class="bare">http://www.graphviz.org/</a></p>
-</li>
-<li>
-<p><a href="https://www.gliffy.com/" class="bare">https://www.gliffy.com/</a></p>
-</li>
-</ul>
-</div>
+<p><a href="http://wfouche.github.io/Blog/2015-12-Asciidoc" class="bare">http://wfouche.github.io/Blog/2015-12-Asciidoc</a></p>
 </div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2016-01-02 12:09:07 SAST
+Last updated 2016-01-02 17:56:53 SAST
 </div>
 </div>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/styles/github.min.css">

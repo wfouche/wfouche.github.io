@@ -1,0 +1,11 @@
+= Blog Articles
+:sectnums:
+:toc: left
+:toclevels: 3
+//:data-uri:
+
+:toc!:
+
+== Blogging with Github Pages and Asciidoc
+
+http://wfouche.github.io/Blog/2015-12-Asciidoc

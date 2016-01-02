@@ -1,0 +1,11 @@
+= Performance
+
+== Non-Functional Requirements
+
+* https://www.utdallas.edu/~chung/SYSM6309/NFR-18.pdf
+
+== Other
+
+* https://en.wikipedia.org/wiki/Software_performance_testing
+* http://www.brendangregg.com/index.html
+* http://www.infoq.com/performance-scalability/

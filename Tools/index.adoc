@@ -47,6 +47,11 @@ Microsoft Visual C++ Compiler for Python 2.7::
 General::
   * http://www.oracle.com/technetwork/java/javase/downloads/index.html
   
+JDBC::
+  * http://jtds.sourceforge.net/
+  * https://msdn.microsoft.com/en-us/sqlserver/aa937724.aspx
+  * http://blogs.msdn.com/b/jdbcteam/
+  
 NIO::
   * http://netty.io/
   * https://mina.apache.org/mina-project/index.html

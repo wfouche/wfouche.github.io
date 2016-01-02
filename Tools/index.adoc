@@ -1,47 +1,16 @@
 = Tools
 :sectnums:
 :toc: left
-:toclevels: 1
+:toclevels: 2
 //:data-uri:
 
 :toc!:
-
-== AsciidocFX
-
-=== Open Issues
-
-All Issues::
-
-  * https://github.com/asciidocfx/AsciidocFX/issues
-  
-My Issues::
-
-  * https://github.com/asciidocfx/AsciidocFX/issues/created_by/wfouche
-
-=== Releases
-
-* https://github.com/asciidocfx/AsciidocFX/releases
-
-=== Commits
-
-* https://github.com/asciidocfx/AsciidocFX/commits/master
-
-=== Sample Document
-
-----
-= Tools
-:sectnums:
-:toc: left
-:toclevels: 1
-//:data-uri:
-
-:toc!:
-
-== AsciidocFX
-----
-
 
 == MS SQL Server
+
+=== Updates
+* http://sqlserverbuilds.blogspot.co.za/
+* http://blogs.msdn.com/b/sqlreleaseservices/
 
 === Blogs
 
@@ -49,10 +18,6 @@ My Issues::
 * http://blogs.technet.com/b/dataplatforminsider/
 * http://blogs.msdn.com/b/sqlcat/
 * http://blogs.msdn.com/b/ssdt/
-
-=== Updates
-* http://sqlserverbuilds.blogspot.co.za/
-* http://blogs.msdn.com/b/sqlreleaseservices/
 
 == Jython
 
@@ -88,6 +53,43 @@ NIO::
   * https://grizzly.java.net/
   * http://camel.apache.org/
 
+Lcc-Win32::
+  * http://www.cs.virginia.edu/~lcc-win32/
+  * http://www.cs.virginia.edu/~lcc-win32/README
+  
 Misc::
   * http://openjdk.java.net/projects/code-tools/jmh/
 
+== AsciidocFX
+
+=== Open Issues
+
+All Issues::
+
+  * https://github.com/asciidocfx/AsciidocFX/issues
+  
+My Issues::
+
+  * https://github.com/asciidocfx/AsciidocFX/issues/created_by/wfouche
+
+=== Releases
+
+* https://github.com/asciidocfx/AsciidocFX/releases
+
+=== Commits
+
+* https://github.com/asciidocfx/AsciidocFX/commits/master
+
+=== Sample Document
+
+----
+= Tools
+:sectnums:
+:toc: left
+:toclevels: 1
+//:data-uri:
+
+:toc!:
+
+== AsciidocFX
+----

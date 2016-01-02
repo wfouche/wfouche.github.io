@@ -5,7 +5,7 @@
 :sectnums:
 :toc: left
 :toclevels: 3
-:data-uri:
+//:data-uri:
 
 :toc!:
 
@@ -49,7 +49,6 @@ Create a file called *index.adoc* with AsciidocFX in the local Git folder.
 :sectnums:
 :toc: left
 :toclevels: 3
-:data-uri:
 
 :toc!:
 

@@ -1,0 +1,93 @@
+= Tools
+:sectnums:
+:toc: left
+:toclevels: 1
+//:data-uri:
+
+:toc!:
+
+== AsciidocFX
+
+=== Open Issues
+
+All Issues::
+
+  * https://github.com/asciidocfx/AsciidocFX/issues
+  
+My Issues::
+
+  * https://github.com/asciidocfx/AsciidocFX/issues/created_by/wfouche
+
+=== Releases
+
+* https://github.com/asciidocfx/AsciidocFX/releases
+
+=== Commits
+
+* https://github.com/asciidocfx/AsciidocFX/commits/master
+
+=== Sample Document
+
+----
+= Tools
+:sectnums:
+:toc: left
+:toclevels: 1
+//:data-uri:
+
+:toc!:
+
+== AsciidocFX
+----
+
+
+== MS SQL Server
+
+=== Blogs
+
+* http://www.brentozar.com/blog/
+* http://blogs.technet.com/b/dataplatforminsider/
+* http://blogs.msdn.com/b/sqlcat/
+* http://blogs.msdn.com/b/ssdt/
+
+=== Updates
+* http://sqlserverbuilds.blogspot.co.za/
+* http://blogs.msdn.com/b/sqlreleaseservices/
+
+== Jython
+
+* http://www.jython.org/
+* http://fwierzbicki.blogspot.fi/
+* http://python.6.x6.nabble.com/jython-dev-f1778516.html
+* https://hg.python.org/jython
+
+== Python
+
+General::
+  * https://www.python.org/
+  * https://pypi.python.org/pypi
+
+Twisted::
+  * https://twistedmatrix.com/trac/
+  
+SQLAlchemy::
+  * http://www.sqlalchemy.org/
+
+Microsoft Visual C++ Compiler for Python 2.7::
+  * http://www.microsoft.com/en-za/download/details.aspx?id=44266
+  * http://stackoverflow.com/questions/26140192/microsoft-visual-c-compiler-for-python-2-7
+  
+== Java
+
+General::
+  * http://www.oracle.com/technetwork/java/javase/downloads/index.html
+  
+NIO::
+  * http://netty.io/
+  * https://mina.apache.org/mina-project/index.html
+  * https://grizzly.java.net/
+  * http://camel.apache.org/
+
+Misc::
+  * http://openjdk.java.net/projects/code-tools/jmh/
+

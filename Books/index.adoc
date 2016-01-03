@@ -21,9 +21,14 @@
 
 == Computer Science
 
-http://ocw.mit.edu/courses/find-by-topic/
+All::
 
-* https://www.youtube.com/playlist?list=PLUl4u3cNGP61Oq3tWYp6V_F-5jb5L2iHb[MIT 6.006 Introduction to Algorithms, Fall 2011]
+  * http://www.hongkiat.com/blog/free-online-courses/
+  * https://www.coursera.org/
+  * http://ocw.mit.edu/courses/find-by-topic/
+  * https://www.edx.org/
 
+OCW::
 
-* http://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-046j-introduction-to-algorithms-sma-5503-fall-2005/video-lectures/[Introduction to Algorithms (SMA 5503)]
+  * https://www.youtube.com/playlist?list=PLUl4u3cNGP61Oq3tWYp6V_F-5jb5L2iHb[MIT 6.006 Introduction to Algorithms, Fall 2011]
+  * http://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-046j-introduction-to-algorithms-sma-5503-fall-2005/video-lectures/[Introduction to Algorithms (SMA 5503)]

@@ -4,6 +4,21 @@
 
 * https://www.utdallas.edu/~chung/SYSM6309/NFR-18.pdf
 
+== Load Testing Tools
+
+http://www.opensourcetesting.org/performance.php
+
+* http://gatling.io/#/
+* http://jmeter.apache.org/
+* http://grinder.sourceforge.net/
+* http://naver.github.io/ngrinder/
+* http://tsung.erlang-projects.org/
+* https://blazemeter.com/features
+* https://github.com/newsapps/beeswithmachineguns
+* https://en.wikipedia.org/wiki/Silk_Performer
+* https://en.wikipedia.org/wiki/NeoLoad
+* https://en.wikipedia.org/wiki/HP_LoadRunner
+
 == Other
 
 * https://en.wikipedia.org/wiki/Software_performance_testing

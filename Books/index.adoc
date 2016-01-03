@@ -1,0 +1,25 @@
+= Books
+:sectnums:
+:toc: left
+:toclevels: 3
+//:data-uri:
+
+:toc!:
+
+== Mathematics
+
+* http://www.math.wisc.edu/~keisler/calc.html[Elementary Calculus: An Infinitesimal Approach]
+
+== Systems Performance
+
+* http://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-172-performance-engineering-of-software-systems-fall-2010/video-lectures/[Performance Engineering of Software Systems]
+** https://www.youtube.com/playlist?list=D2AE32F507F10481&feature=viewall
+*** https://www.youtube.com/watch?v=JzpkXLH9zLQ&list=PLD2AE32F507F10481&index=1[Lec 1 | MIT 6.172 Performance Engineering of Software Systems, Fall 2010]
+*** https://www.youtube.com/watch?v=xc9DDSbf0NQ&list=PLD2AE32F507F10481&index=2[Lec 2 | MIT 6.172 Performance Engineering of Software Systems, Fall 2010]
+**** TBD
+
+
+== Computer Science
+
+* https://www.youtube.com/playlist?list=PLUl4u3cNGP61Oq3tWYp6V_F-5jb5L2iHb[MIT 6.006 Introduction to Algorithms, Fall 2011]
+

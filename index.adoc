@@ -3,5 +3,6 @@
 == Site Links
 
 * http://wfouche.github.io/Blog[Blog]
+* http://wfouche.github.io/Books[Books]
 * http://wfouche.github.io/Performance[Performance]
 * http://wfouche.github.io/Tools[Tools]

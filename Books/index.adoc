@@ -13,11 +13,39 @@
 == Systems Performance
 
 * http://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-172-performance-engineering-of-software-systems-fall-2010/video-lectures/[Performance Engineering of Software Systems]
+
 ** https://www.youtube.com/playlist?list=D2AE32F507F10481&feature=viewall
+
 *** https://www.youtube.com/watch?v=JzpkXLH9zLQ&list=PLD2AE32F507F10481&index=1[Lec 1 | MIT 6.172 Performance Engineering of Software Systems, Fall 2010]
+**** Efficient matrix multiplication.
+
 *** https://www.youtube.com/watch?v=xc9DDSbf0NQ&list=PLD2AE32F507F10481&index=2[Lec 2 | MIT 6.172 Performance Engineering of Software Systems, Fall 2010]
 **** TBD
 
+----
+x,y = 10,20
+print x,y
+x = x ^ y
+y = x ^ y
+x = x ^ y
+print x,y
+----
+
+----
+x,y = 10,20
+print x,y
+x = x + y
+y = x - y
+x = x - y
+print x,y
+----
+
+https://en.wikipedia.org/wiki/XOR_swap_algorithm
+
+http://www.cs.umd.edu/class/sum2003/cmsc311/Notes/BitOp/xor.html
+
+*   **Inclusive or**: A or B or both.
+*   **Exclusive or**: Either A or B but not both.
 
 == Computer Science
 

@@ -1,9 +1,11 @@
 = wfouche.github.io
+Werner Fouché, Cape Town (South Africa), <werner.fouche@gmail.com>
+
 
 == Site Links
 
 * http://wfouche.github.io/Blog[Blog]
 * http://wfouche.github.io/Books[Books]
 * http://wfouche.github.io/Life[Life]
-* http://wfouche.github.io/Performance[Performance]
-* http://wfouche.github.io/Tools[Tools]
+* http://wfouche.github.io/Performance[SPE]
+* http://wfouche.github.io/Tools[Software]

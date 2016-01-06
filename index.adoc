@@ -12,4 +12,5 @@ Werner Fouché, Cape Town (South Africa), <werner.fouche@gmail.com>
 
 == Cape Town
 
-http://www.timeanddate.com/worldclock/south-africa/cape-town
+* http://www.timeanddate.com/worldclock/south-africa/cape-town
+* http://www.capetownmagazine.com/

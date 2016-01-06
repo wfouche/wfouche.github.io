@@ -6,9 +6,35 @@
 
 :toc!:
 
+== General
+
+* http://www.nature.com
+* http://lifehacker.com/
+* http://www.ibm.com/developerworks/
+* http://www.slashdot.org
+* http://thedailywtf.com/
+* http://www.linuxtoday.com/
+
 == Mathematics
 
 * http://www.math.wisc.edu/~keisler/calc.html[Elementary Calculus: An Infinitesimal Approach]
+
+== Computer Science
+
+Sites::
+
+    * http://queue.acm.org/
+    * http://www.infoq.com/
+    ** http://www.infoq.com/news/2016/01/VS-64-bit
+    ** http://www.infoq.com/presentations/jvm-tuning-2015?utm_campaign=rightbar_v2&utm_source=infoq&utm_medium=presentations_link&utm_content=link_text
+    ** http://www.infoq.com/presentations/java-big-data-tuning?utm_campaign=rightbar_v2&utm_source=infoq&utm_medium=presentations_link&utm_content=link_text
+
+Testing::
+    * http://www.infoq.com/presentations/testing-web-services-soap-rest
+    
+
+Authors::
+  * http://www.paulgraham.com/articles.html
 
 == Systems Performance
 

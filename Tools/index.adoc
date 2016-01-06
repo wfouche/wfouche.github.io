@@ -11,6 +11,7 @@
 === Updates
 * http://sqlserverbuilds.blogspot.co.za/
 * http://blogs.msdn.com/b/sqlreleaseservices/
+* http://blogs.sqlsentry.com/aaronbertrand/new-serverproperty-options-to-help-phase-out-version/
 
 === Blogs
 
@@ -108,3 +109,6 @@ My Issues::
 
 * https://chocolatey.org/
 * https://github.com/chocolatey/choco/commits/master
+* http://www.hanselman.com/blog/AptGetForWindowsOneGetAndChocolateyOnWindows10.aspx
+* http://docs.ansible.com/ansible/win_chocolatey_module.html
+* 

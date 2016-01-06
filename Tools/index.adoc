@@ -6,20 +6,6 @@
 
 :toc!:
 
-== MS SQL Server
-
-=== Updates
-* http://sqlserverbuilds.blogspot.co.za/
-* http://blogs.msdn.com/b/sqlreleaseservices/
-* http://blogs.sqlsentry.com/aaronbertrand/new-serverproperty-options-to-help-phase-out-version/
-
-=== Blogs
-
-* http://www.brentozar.com/blog/
-* http://blogs.technet.com/b/dataplatforminsider/
-* http://blogs.msdn.com/b/sqlcat/
-* http://blogs.msdn.com/b/ssdt/
-
 == Jython
 
 === General
@@ -112,3 +98,33 @@ My Issues::
 * http://www.hanselman.com/blog/AptGetForWindowsOneGetAndChocolateyOnWindows10.aspx
 * http://docs.ansible.com/ansible/win_chocolatey_module.html
 * 
+
+=== MS SQL Server
+
+=== Updates
+* http://sqlserverbuilds.blogspot.co.za/
+* http://blogs.msdn.com/b/sqlreleaseservices/
+* http://blogs.sqlsentry.com/aaronbertrand/new-serverproperty-options-to-help-phase-out-version/
+
+==== Blogs
+
+* http://www.brentozar.com/blog/
+* http://blogs.technet.com/b/dataplatforminsider/
+* http://blogs.msdn.com/b/sqlcat/
+* http://blogs.msdn.com/b/ssdt/
+
+
+== SCM
+
+* SVN
+** https://tortoisesvn.net/
+* Git
+** http://www.syntevo.com/smartgit/
+** http://www.github.com
+** https://bitbucket.org/
+* Perforce (with Git support)
+** https://www.perforce.com/
+** https://www.perforce.com/gitswarm
+** http://filehost.perforce.com/perforce/r15.1/bin.ntx64/
+* Mercurial
+** https://www.mercurial-scm.org/

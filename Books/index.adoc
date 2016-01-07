@@ -1,6 +1,6 @@
 = Books
 :sectnums:
-:toc:
+:toc: left
 :toclevels: 2
 //:data-uri:
 

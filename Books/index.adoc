@@ -1,7 +1,7 @@
 = Books
 :sectnums:
-:toc: left
-:toclevels: 3
+:toc:
+:toclevels: 2
 //:data-uri:
 
 :toc!:
@@ -35,6 +35,12 @@ Testing::
 
 Authors::
   * http://www.paulgraham.com/articles.html
+
+Text Books::
+
+  * http://homes.cs.washington.edu/~lazowska/qsp/[Quantitative System Performance: Computer System Analysis Using Queueing Network Models]
+  
+  * http://www.cs.wustl.edu/~jain/books/perfbook.htm
 
 == Systems Performance
 

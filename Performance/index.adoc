@@ -1,5 +1,12 @@
 = Performance
 
+== Conferences
+
+* http://icpe.ipd.kit.edu/[ACM/SPEC International Conference on Performance Engineering]
+** https://icpe2016.spec.org/
+** http://icpe2015.ipd.kit.edu/
+** http://icpe2014.ipd.kit.edu/
+
 == Non-Functional Requirements
 
 * https://www.utdallas.edu/~chung/SYSM6309/NFR-18.pdf

@@ -1,0 +1,25 @@
+= Games
+//:sectnums:
+:toc: left
+:toclevels: 2
+//:data-uri:
+
+https://minecraft.net/
+
+:toc!:
+
+== Minecraft
+
+=== Step 0 - Get a license for Minecraft
+
+https://minecraft.net/store/minecraft
+
+=== Step 1 - Installing Minecraft
+
+Download the Minecraft installer for Windows from:
+
+https://launcher.mojang.com/download/MinecraftInstaller.msi
+
+=== Step 2 
+
+...

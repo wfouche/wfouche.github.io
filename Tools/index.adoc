@@ -66,6 +66,10 @@ All Issues::
 My Issues::
 
   * https://github.com/asciidocfx/AsciidocFX/issues/created_by/wfouche
+  
+Pull Requests::
+
+  * https://github.com/asciidocfx/AsciidocFX/pulls
 
 === Releases
 

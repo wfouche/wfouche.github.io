@@ -1,7 +1,7 @@
 //
 // file: index.adoc
 //
-= AsciiDoc and Githug Pages
+= AsciiDoc and Github Pages
 :sectnums:
 :toc: left
 :toclevels: 3

@@ -117,6 +117,12 @@ Pull Requests::
 * http://blogs.msdn.com/b/sqlcat/
 * http://blogs.msdn.com/b/ssdt/
 
+== Task Management
+
+* https://bitnami.com/stack/tracks
+* http://www.xmind.net
+* http://www.getontracks.org/
+* http://www.abstractspoon.com/tdl_resources.html
 
 == SCM
 

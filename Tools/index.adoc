@@ -124,7 +124,7 @@ Pull Requests::
 * http://www.getontracks.org/
 * http://www.abstractspoon.com/tdl_resources.html
 
-== SCM
+== Software Configuration Management
 
 * SVN
 ** https://tortoisesvn.net/
@@ -138,3 +138,13 @@ Pull Requests::
 ** http://filehost.perforce.com/perforce/r15.1/bin.ntx64/
 * Mercurial
 ** https://www.mercurial-scm.org/
+
+== Virtualization
+
+=== VMware
+
+* https://blogs.vmware.com/performance
+
+
+=== Virtualbox
+=== KVM

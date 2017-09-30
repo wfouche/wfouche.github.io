@@ -7,6 +7,7 @@ Werner Fouché, Cape Town (South Africa), <werner.fouche@gmail.com>
 * http://wfouche.github.io/Blog[Blog]
 * http://wfouche.github.io/Books[Books]
 * http://wfouche.github.io/Leisure[Leisure]
+* http://wfouche.github.io/Finance[Personal Finance]
 * http://wfouche.github.io/Performance[Performance Engineering]
 * http://wfouche.github.io/Tools[Software]
 

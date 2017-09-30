@@ -1,0 +1,27 @@
+= Personal Finance
+:sectnums:
+:toc: left
+:toclevels: 2
+//:data-uri:
+
+== Online Resources
+
+Personal Finance Web Sites::
+
+* https://www.iol.co.za/personal-finance
+* http://www.fin24.com/
+* http://www.fin24.com/finweek
+* http://www.702.co.za/features/82/the-personal-finance-series
+* https://www.moneyweb.co.za/
+
+Podcasts::
+
+* http://www.702.co.za/features/82/the-personal-finance-series
+
+Books::
+
+* https://www.exclusivebooks.co.za/product/9781770226180[Become your own financial advisor (Warren Ingram)]
+
+== Investment Options
+
+=== ETFs - http://www.etfsa.co.za/

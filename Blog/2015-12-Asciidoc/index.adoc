@@ -35,7 +35,7 @@ SmartGit is a user-friendly front-end to Git, and can be used with Github and ot
 
 From the SmartGit UI, select Repository / Clone to fetch the files in the Git repository (replace *username* with your specific Github username):
 
-* https://github.com/username/username.github.io
+* https://github.com/username/username.github.io.git
 
 === Create blog files
 

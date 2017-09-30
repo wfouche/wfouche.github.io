@@ -24,4 +24,11 @@ Books::
 
 == Investment Options
 
-=== ETFs - http://www.etfsa.co.za/
+=== ETFs
+
+* http://www.etfsa.co.za/
+
+=== Tax free savings
+
+* R30,000 per year in South Africa
+** https://www.iol.co.za/personal-finance/tax/tax-free-savings-accounts-what-you-should-know-1921253

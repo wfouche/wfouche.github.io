@@ -1,4 +1,7 @@
 = Tulip
+:toc:
+:toc: left
+:sectnums:
 
 == Introduction
 

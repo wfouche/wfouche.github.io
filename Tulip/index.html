@@ -553,6 +553,13 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
 <li><a href="#_introduction">1. Introduction</a></li>
+<li><a href="#_system_under_test">2. System Under Test</a></li>
+<li><a href="#_benchmark_configuration">3. Benchmark Configuration</a>
+<ul class="sectlevel2">
+<li><a href="#_user_workflows">3.1. User Workflows</a></li>
+<li><a href="#_runtime">3.2. Runtime</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
@@ -565,10 +572,73 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 </div>
 </div>
+<div class="sect1">
+<h2 id="_system_under_test">2. System Under Test</h2>
+<div class="sectionbody">
+<div class="imageblock kroki">
+<div class="content">
+<img src="https://kroki.io/c4plantuml/svg/eNqVVdtu2zAMfc9XcNlLBrgtBuwDmhvWFkmb1enaPRm0zCRCZcmQ5LTFsH8f5dhOnBS7-MmiycPDQ1K-dB6tL3PV-yC1UGVGMP6SjI32KDXZ8yJ86s2GP-4elsnybpFM7h5vB58ay-P18iqZTb9Obyds7HnpFQM00ZBJXFvMYWUsXGtPVpOHEepnqdcQvzlPea-3IOuMHojSeZOTjWDcvvWH0JjBrMBvCFKOjuBF-g0UVSCqygYohCm1d33msYNORmzI0L4NxGfGOibQ_wQ_e8BPy3fwQmmCRcHOj5TCsCiUFOil0X023eAWI4gLG8jPv4-DbUJKbplGRY2l9FKAYDjSHlBnlbnNmzaFL4ZMspvZFYzdj_mzorMFrilkb7LGwsrCRzDU61KhDeaFNVuZkQNU6v0sq1KLQB2V9G_gDStZCelgKzGESAtcL6TWvDiyJ4xyk0pFtRzz6tBwGn-M4AlzZCW6XEDJXHrKwJWpYy51z_6FmzshtyMAGW2loGN6k3SQoccUHYU21K-BTfxtBp2zN5a5lVwjWFpL5y1yapCapzKvuhvBhp0zwJKnSljKuH0SlYvCUJFzoMyaD-TF-YlMKYpn0hnrJMO8Lq7fH5uJYTe7j-vo9hd9giQMzKl_taM9ffUDylGqxFUGhpuezflcr1XAX7L0soLmHZlLYY0zKw_TV7FBzRO2i2TYA8yawR6VMfWKd5iO9vZA2jCCdacFG9oqDhQGTE3p922O2nWNgPuhHVb17kXu3ZM6uBL2i_ngyIXcV8vlImbHrt9ujf7s0xnsynWXLrklud6k5uAa2ME1S14jVcZu25uE6N60iOAmvru9OEx-mPK_IpMRe--J7Ue-i3JPmDlYWZNXt86L5SXkO8kE5Bp4Mho3dQbMAz2OxihmWAd0FqwVxp7I0cR1OXTjShdu2DZ9PF8uaqC2mE74ydw1woT4i1qdp_msFeeSQ_nf9BvklUnz" alt="diag02">
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_benchmark_configuration">3. Benchmark Configuration</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="json">{
+    <span style="color:#606"><span style="color:#404">&quot;</span><span>static</span><span style="color:#404">&quot;</span></span>: {
+        <span style="color:#606"><span style="color:#404">&quot;</span><span>description</span><span style="color:#404">&quot;</span></span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Micro-benchmarks</span><span style="color:#710">&quot;</span></span>,
+        <span style="color:#606"><span style="color:#404">&quot;</span><span>output_filename</span><span style="color:#404">&quot;</span></span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">benchmark_output.json</span><span style="color:#710">&quot;</span></span>,
+        <span style="color:#606"><span style="color:#404">&quot;</span><span>report_filename</span><span style="color:#404">&quot;</span></span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">benchmark_report.html</span><span style="color:#710">&quot;</span></span>,
+        <span style="color:#606"><span style="color:#404">&quot;</span><span>user_class</span><span style="color:#404">&quot;</span></span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">HttpUser</span><span style="color:#710">&quot;</span></span>,
+        <span style="color:#606"><span style="color:#404">&quot;</span><span>user_params</span><span style="color:#404">&quot;</span></span>: {
+            <span style="color:#606"><span style="color:#404">&quot;</span><span>url</span><span style="color:#404">&quot;</span></span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">https://jsonplaceholder.typicode.com</span><span style="color:#710">&quot;</span></span>,
+            <span style="color:#606"><span style="color:#404">&quot;</span><span>urlx</span><span style="color:#404">&quot;</span></span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">http://localhost:7070</span><span style="color:#710">&quot;</span></span>
+        },
+        <span style="color:#606"><span style="color:#404">&quot;</span><span>action_names</span><span style="color:#404">&quot;</span></span>: {
+            <span style="color:#606"><span style="color:#404">&quot;</span><span>0</span><span style="color:#404">&quot;</span></span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">start</span><span style="color:#710">&quot;</span></span>,
+            <span style="color:#606"><span style="color:#404">&quot;</span><span>1</span><span style="color:#404">&quot;</span></span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">HTTP-DDEB</span><span style="color:#710">&quot;</span></span>,
+            <span style="color:#606"><span style="color:#404">&quot;</span><span>2</span><span style="color:#404">&quot;</span></span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">HTTP-AUTH</span><span style="color:#710">&quot;</span></span>,
+            <span style="color:#606"><span style="color:#404">&quot;</span><span>3</span><span style="color:#404">&quot;</span></span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">HTTP-COMP</span><span style="color:#710">&quot;</span></span>,
+            <span style="color:#606"><span style="color:#404">&quot;</span><span>4</span><span style="color:#404">&quot;</span></span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">HTTP-REFD</span><span style="color:#710">&quot;</span></span>,
+            <span style="color:#606"><span style="color:#404">&quot;</span><span>99</span><span style="color:#404">&quot;</span></span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">stop</span><span style="color:#710">&quot;</span></span>
+        },
+        <span style="color:#606"><span style="color:#404">&quot;</span><span>action_workflow</span><span style="color:#404">&quot;</span></span>: {
+            <span style="color:#606"><span style="color:#404">&quot;</span><span>0</span><span style="color:#404">&quot;</span></span>: {<span style="color:#606"><span style="color:#404">&quot;</span><span>1</span><span style="color:#404">&quot;</span></span>: <span style="color:#60E">0.6</span>, <span style="color:#606"><span style="color:#404">&quot;</span><span>2</span><span style="color:#404">&quot;</span></span>: <span style="color:#60E">0.4</span>},
+            <span style="color:#606"><span style="color:#404">&quot;</span><span>1</span><span style="color:#404">&quot;</span></span>: {<span style="color:#606"><span style="color:#404">&quot;</span><span>0</span><span style="color:#404">&quot;</span></span>: <span style="color:#60E">0.8</span>, <span style="color:#606"><span style="color:#404">&quot;</span><span>4</span><span style="color:#404">&quot;</span></span>: <span style="color:#60E">0.2</span>},
+            <span style="color:#606"><span style="color:#404">&quot;</span><span>2</span><span style="color:#404">&quot;</span></span>: {<span style="color:#606"><span style="color:#404">&quot;</span><span>3</span><span style="color:#404">&quot;</span></span>: <span style="color:#60E">1.0</span>},
+            <span style="color:#606"><span style="color:#404">&quot;</span><span>3</span><span style="color:#404">&quot;</span></span>: {<span style="color:#606"><span style="color:#404">&quot;</span><span>0</span><span style="color:#404">&quot;</span></span>: <span style="color:#60E">0.8</span>, <span style="color:#606"><span style="color:#404">&quot;</span><span>4</span><span style="color:#404">&quot;</span></span>: <span style="color:#60E">0.2</span>},
+            <span style="color:#606"><span style="color:#404">&quot;</span><span>4</span><span style="color:#404">&quot;</span></span>: {<span style="color:#606"><span style="color:#404">&quot;</span><span>0</span><span style="color:#404">&quot;</span></span>: <span style="color:#60E">1.0</span>},
+    },
+    <span style="color:#606"><span style="color:#404">&quot;</span><span>contexts</span><span style="color:#404">&quot;</span></span>: [],
+    <span style="color:#606"><span style="color:#404">&quot;</span><span>benchmarks</span><span style="color:#404">&quot;</span></span>: []
+}</code></pre>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_user_workflows">3.1. User Workflows</h3>
+<div class="imageblock kroki">
+<div class="content">
+<img src="https://kroki.io/plantuml/svg/eNptkE8LgjAYh-_7FC8eA2UzifAQDjzkTdLoEB0kF0jLib4Rffv2J8XI3fY8v737bcmAVY_PhyQEG5QC9ojdcRA9nFR_v0n1IgT00jEU4B1EVb89qAbI8jnnV2xUC8wqThdU6BRbUGuryqJccJF1qStxXl3A93f67hgK09vSLLeQ0xhosLGI0ylHg-0cpYaEP-eYQZELMYt0lRhY4J6hN3_DRjablk6h8eB3vi5t2qqOkES0tf7qD5k8WV4=" alt="diag03">
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_runtime">3.2. Runtime</h3>
+<div class="imageblock kroki">
+<div class="content">
+<img src="https://kroki.io/plantuml/svg/eNpzKC5JLCrJzcxLyU0s4NJS8E3MzNMNyShKTUzh0tJSgLB0DYBsLYVQKGWIJGMIETKCUMZIMlAhEwhliiRjDBEyg1DmXA6pQNshLgAAuUMkcA==" alt="diag00">
+</div>
+</div>
+</div>
+</div>
+</div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2024-09-18 12:15:32 +0200
+Last updated 2024-11-21 13:27:34 +0200
 </div>
 </div>
 <script>

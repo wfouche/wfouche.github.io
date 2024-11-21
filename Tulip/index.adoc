@@ -6,3 +6,127 @@
 == Introduction
 
 *Under construction.*
+
+== System Under Test
+
+[c4plantuml,diag02,svg]
+....
+@startuml
+!include C4_Container.puml
+
+LAYOUT_TOP_DOWN()
+LAYOUT_WITH_LEGEND()
+
+title Container diagram for Internet Banking System
+
+Person(customer, Customer, "A customer of the bank, with personal bank accounts")
+
+System_Boundary(c1, "Internet Banking") {
+    Container(web_app, "Web Application", "Java, Spring MVC", "Delivers the static content and the Internet banking SPA")
+    Container(spa, "Single-Page App", "JavaScript, Angular", "Provides all the Internet banking functionality to cutomers via their web browser")
+    Container(mobile_app, "Mobile App", "C#, Xamarin", "Provides a limited subset of the Internet banking functionality to customers via their mobile device")
+    ContainerDb(database, "Database", "SQL Database", "Stores user registraion information, hased auth credentials, access logs, etc.")
+    Container(backend_api, "API Application", "Java, Docker Container", "Provides Internet banking functionality via API")
+}
+
+System_Ext(email_system, "E-Mail System", "The internal Microsoft Exchange system")
+System_Ext(banking_system, "Mainframe Banking System", "Stores all of the core banking information about customers, accounts, transactions, etc.")
+
+Rel(customer, web_app, "Uses", "HTTPS")
+Rel(customer, spa, "Uses", "HTTPS")
+Rel(customer, mobile_app, "Uses")
+
+Rel_Neighbor(web_app, spa, "Delivers")
+Rel(spa, backend_api, "Uses", "async, JSON/HTTPS")
+Rel(mobile_app, backend_api, "Uses", "async, JSON/HTTPS")
+Rel_Back_Neighbor(database, backend_api, "Reads from and writes to", "sync, JDBC")
+
+Rel_Back(customer, email_system, "Sends e-mails to")
+Rel_Back(email_system, backend_api, "Sends e-mails using", "sync, SMTP")
+Rel_Neighbor(backend_api, banking_system, "Uses", "sync/async, XML/HTTPS")
+@enduml
+....
+
+== Benchmark Configuration
+
+[source,json]
+----
+{
+    "static": {
+        "description": "Micro-benchmarks",
+        "output_filename": "benchmark_output.json",
+        "report_filename": "benchmark_report.html",
+        "user_class": "HttpUser",
+        "user_params": {
+            "url": "https://jsonplaceholder.typicode.com",
+            "urlx": "http://localhost:7070"
+        },
+        "action_names": {
+            "0": "start",
+            "1": "HTTP-DDEB",
+            "2": "HTTP-AUTH",
+            "3": "HTTP-COMP",
+            "4": "HTTP-REFD",
+            "99": "stop"
+        },
+        "action_workflow": {
+            "0": {"1": 0.6, "2": 0.4},
+            "1": {"0": 0.8, "4": 0.2},
+            "2": {"3": 1.0},
+            "3": {"0": 0.8, "4": 0.2},
+            "4": {"0": 1.0},
+    },
+    "contexts": [],
+    "benchmarks": []
+}
+----
+
+=== User Workflows
+
+[plantuml,diag03,svg]
+....
+@startuml
+
+title HttpUser Workflow
+
+    state "Ready" as IP
+    state "Action 1" as A0
+    state "Action 2" as A1
+    state "Action 3" as TST
+    state "Action 4" as D
+
+    [*] --> IP: Start
+    IP --> A0: 0.6
+    A0 --> IP: 0.8
+    A0 --> D: 0.2
+    IP --> A1: 0.4
+    A1 --> TST: 1.0
+    TST --> IP: 0.8
+    TST --> D: 0.2
+    D --> IP: 1.0
+    IP --> [*]: Stop
+
+@enduml
+....
+
+
+=== Runtime
+
+[plantuml,diag00,svg]
+----
+@startmindmap
+* Main-Thread
+** Thread-0
+*** U0
+*** U1
+** Thread-1
+*** U2
+*** U3
+** Thread-2
+*** U4
+*** U5
+** Thread-3
+*** U6
+*** U7
+@endmindmap
+----

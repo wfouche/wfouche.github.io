@@ -6,7 +6,7 @@
 
 == Introduction
 
-<The documentation site is under construction>.
+<Under construction>.
 
 https://github.com/wfouche/Tulip
 

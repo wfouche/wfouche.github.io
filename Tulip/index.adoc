@@ -8,6 +8,6 @@
 
 <Documentation is under construction>.
 
-== Source Code
-
 * https://github.com/wfouche/Tulip
+
+image::tulip_logo.svg[]

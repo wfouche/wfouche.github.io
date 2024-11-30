@@ -6,8 +6,8 @@
 
 == Introduction
 
-<Documentation is under construction>.
+<The documentation site is under construction>.
 
-* https://github.com/wfouche/Tulip
+https://github.com/wfouche/Tulip
 
 image::tulip_logo.svg[]

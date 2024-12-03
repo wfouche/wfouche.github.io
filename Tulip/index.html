@@ -751,7 +751,13 @@ span.icon > [class^="icon-"], span.icon > [class*=" icon-"] { cursor: default; }
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
 <li><a href="#_introduction">1. Introduction</a></li>
-<li><a href="#_maven_central">2. Maven Central</a></li>
+<li><a href="#_maven_central">2. Maven Central</a>
+<ul class="sectlevel2">
+<li><a href="#_maven_xml">2.1. Maven (xml)</a></li>
+<li><a href="#_gradle_groovy">2.2. Gradle (Groovy)::</a></li>
+<li><a href="#_gradle_kts">2.3. Gradle (kts)</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
@@ -782,38 +788,31 @@ span.icon > [class^="icon-"], span.icon > [class*=" icon-"] { cursor: default; }
 <ul>
 <li>
 <p><a href="https://central.sonatype.com/namespace/io.github.wfouche.tulip" class="bare">https://central.sonatype.com/namespace/io.github.wfouche.tulip</a></p>
-<div class="dlist">
-<dl>
-<dt class="hdlist1">Maven (xml)</dt>
-</dl>
-</div>
 </li>
 </ul>
 </div>
+<div class="sect2">
+<h3 id="_maven_xml">2.1. Maven (xml)</h3>
 <div class="listingblock">
 <div class="content">
-<pre>&lt;dependency&gt;
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;dependency&gt;
     &lt;groupId&gt;io.github.wfouche.tulip&lt;/groupId&gt;
     &lt;artifactId&gt;tulip-runtime&lt;/artifactId&gt;
     &lt;version&gt;2.0.0&lt;/version&gt;
-&lt;/dependency&gt;</pre>
+&lt;/dependency&gt;</code></pre>
 </div>
 </div>
-<div class="dlist">
-<dl>
-<dt class="hdlist1">Gradle (Groovy)</dt>
-</dl>
 </div>
+<div class="sect2">
+<h3 id="_gradle_groovy">2.2. Gradle (Groovy)::</h3>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-groovy hljs" data-lang="groovy">implementation 'io.github.wfouche.tulip:tulip-runtime:2.0.0'</code></pre>
 </div>
 </div>
-<div class="dlist">
-<dl>
-<dt class="hdlist1">Gradle (kts)</dt>
-</dl>
 </div>
+<div class="sect2">
+<h3 id="_gradle_kts">2.3. Gradle (kts)</h3>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-kotlin hljs" data-lang="kotlin">implementation("io.github.wfouche.tulip:tulip-runtime:2.0.0")</code></pre>
@@ -822,9 +821,10 @@ span.icon > [class^="icon-"], span.icon > [class*=" icon-"] { cursor: default; }
 </div>
 </div>
 </div>
+</div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2024-12-03 12:56:33 +0200
+Last updated 2024-12-03 12:57:32 +0200
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/highlight.min.js"></script>

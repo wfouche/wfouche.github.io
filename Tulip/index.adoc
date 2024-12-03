@@ -27,7 +27,7 @@ Tulip is now available on Maven Central at:
 
 * https://central.sonatype.com/namespace/io.github.wfouche.tulip
 
-Maven (xml)::
+=== Maven (xml)
 
 [source,xml]
 ----
@@ -38,14 +38,14 @@ Maven (xml)::
 </dependency>
 ----
 
-Gradle (Groovy)::
+=== Gradle (Groovy)::
 
 [source,groovy]
 ----
 implementation 'io.github.wfouche.tulip:tulip-runtime:2.0.0'
 ----
 
-Gradle (kts)::
+=== Gradle (kts)
 
 [source,kotlin]
 ----

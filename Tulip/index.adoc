@@ -38,7 +38,7 @@ Tulip is now available on Maven Central at:
 </dependency>
 ----
 
-=== Gradle (Groovy)::
+=== Gradle (Groovy)
 
 [source,groovy]
 ----

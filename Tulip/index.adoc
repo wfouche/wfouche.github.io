@@ -23,7 +23,9 @@ image::tulip_logo.svg[width=128]
 
 == Maven Central
 
-Tulip is now available on Maven Central at https://central.sonatype.com/namespace/io.github.wfouche.tulip
+Tulip is now available on Maven Central at:
+
+* https://central.sonatype.com/namespace/io.github.wfouche.tulip
 
 Maven (xml)::
 

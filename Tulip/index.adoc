@@ -10,6 +10,13 @@
 
 https://github.com/wfouche/Tulip
 
+//
+// https://www.freepik.com/free-vector/tulip-flower-logo-gradient-colorful_41061958.htm
+//
+// logo designed by *Freepik*
+//
+// https://support.freepik.com/s/article/Attribution-How-when-and-where
+//
 image::tulip_logo.svg[width=128]
 
 == Maven Central

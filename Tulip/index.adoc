@@ -1,8 +1,10 @@
 = Tulip
-:toc:
 :toc: left
 :sectnums:
 :source-highlighter: highlightjs
+:stylesdir: css
+:stylesheet: adoc-foundation.css
+
 
 == Introduction
 

@@ -1,4 +1,4 @@
-= Tulip
+= Tulip: Performance regression testing and load testing software
 :toc: left
 :sectnums:
 :source-highlighter: highlightjs

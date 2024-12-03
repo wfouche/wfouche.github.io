@@ -10,4 +10,4 @@
 
 https://github.com/wfouche/Tulip
 
-image::tulip_logo.svg[]
+image::tulip_logo.svg[width=128]

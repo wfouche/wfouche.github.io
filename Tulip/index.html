@@ -433,6 +433,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 #footer-text{color:rgba(0,0,0,.6);font-size:.9em}}
 @media amzn-kf8{#header,#content,#footnotes,#footer{padding:0}}
 </style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/styles/github.min.css">
 <style>
 /*! Asciidoctor Tabs | Copyright (c) 2018-present Dan Allen | MIT License */
 .tabs {
@@ -553,6 +554,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
 <li><a href="#_introduction">1. Introduction</a></li>
+<li><a href="#_maven_central">2. Maven Central</a></li>
 </ul>
 </div>
 </div>
@@ -573,12 +575,56 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 </div>
 </div>
+<div class="sect1">
+<h2 id="_maven_central">2. Maven Central</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Tulip is now available on Maven Central at:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://central.sonatype.com/namespace/io.github.wfouche.tulip" class="bare">https://central.sonatype.com/namespace/io.github.wfouche.tulip</a></p>
+<div class="listingblock">
+<div class="title">Maven (xml)</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;dependency&gt;
+    &lt;groupId&gt;io.github.wfouche.tulip&lt;/groupId&gt;
+    &lt;artifactId&gt;tulip-runtime&lt;/artifactId&gt;
+    &lt;version&gt;2.0.0&lt;/version&gt;
+&lt;/dependency&gt;</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Gradle (Groovy)</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-groovy hljs" data-lang="groovy">implementation 'io.github.wfouche.tulip:tulip-runtime:2.0.0'</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Gradle (kts)</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-kotlin hljs" data-lang="kotlin">implementation("io.github.wfouche.tulip:tulip-runtime:2.0.0")</code></pre>
+</div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2024-12-03 10:57:39 +0200
+Last updated 2024-12-03 11:19:23 +0200
 </div>
 </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/highlight.min.js"></script>
+<script>
+if (!hljs.initHighlighting.called) {
+  hljs.initHighlighting.called = true
+  ;[].slice.call(document.querySelectorAll('pre.highlight > code[data-lang]')).forEach(function (el) { hljs.highlightBlock(el) })
+}
+</script>
 <script>
 ;(function () { /*! Asciidoctor Tabs | Copyright (c) 2018-present Dan Allen | MIT License */
   'use strict'

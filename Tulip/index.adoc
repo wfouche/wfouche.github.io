@@ -5,6 +5,7 @@
 :stylesdir: css
 :stylesheet: adoc-foundation.css
 
+image::tulip_logo.svg[width=128]
 
 == Introduction
 
@@ -19,7 +20,6 @@ https://github.com/wfouche/Tulip
 //
 // https://support.freepik.com/s/article/Attribution-How-when-and-where
 //
-image::tulip_logo.svg[width=128]
 
 == Maven Central
 

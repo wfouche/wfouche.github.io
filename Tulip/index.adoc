@@ -55,6 +55,6 @@ implementation("io.github.wfouche.tulip:tulip-runtime:2.0.0")
 
 == Tulip Releases
 
-* [2.0.0] - 2024/12/01
+* [v2.0.0] - 2024/12/01
 
-** https://github.com/wfouche/Tulip/releases?q=2.0.0&expanded=true
+** https://github.com/wfouche/Tulip/releases?q=v2.0.0&expanded=true

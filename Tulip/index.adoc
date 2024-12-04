@@ -1,4 +1,5 @@
 = Tulip: Load Testing, Stress Testing and Performance Regression Testing
+v2.0.0
 :toc: left
 :sectnums:
 :source-highlighter: highlightjs

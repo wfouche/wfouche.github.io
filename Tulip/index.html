@@ -951,7 +951,10 @@ class DemoUser(userId: Int, threadId: Int) : TulipUser(userId, threadId) {
 import io.github.wfouche.tulip.api.*
 
 fun main(args: Array&lt;String&gt;) {
-    TulipApi.runTulip("benchmark_config.json", TulipUserFactory())
+    TulipApi.runTulip(
+        "benchmark_config.json",
+        TulipUserFactory()
+    )
 }</code></pre>
 </div>
 </div>
@@ -1102,7 +1105,7 @@ limitations under the License.</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2024-12-05 22:50:33 +0200
+Last updated 2024-12-05 23:06:46 +0200
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/highlight.min.js"></script>

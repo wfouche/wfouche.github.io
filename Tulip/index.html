@@ -757,7 +757,13 @@ span.icon > [class^="icon-"], span.icon > [class*=" icon-"] { cursor: default; }
 <li><a href="#_introduction">1. Introduction</a></li>
 <li><a href="#_sample_benchmark">2. Sample Benchmark</a>
 <ul class="sectlevel2">
-<li><a href="#_benchmark_execution">2.1. Benchmark Execution</a></li>
+<li><a href="#_benchmark_configuration">2.1. Benchmark Configuration</a></li>
+<li><a href="#_benchmark_user">2.2. Benchmark User</a></li>
+<li><a href="#_benchmark_app">2.3. Benchmark App</a></li>
+<li><a href="#_run_script">2.4. Run Script</a></li>
+<li><a href="#_console_output">2.5. Console Output</a></li>
+<li><a href="#_performance_report_text">2.6. Performance Report - Text</a></li>
+<li><a href="#_performance_report_html">2.7. Performance Report - HTML</a></li>
 </ul>
 </li>
 <li><a href="#_basic_principles">3. Basic Principles</a></li>
@@ -795,11 +801,210 @@ span.icon > [class^="icon-"], span.icon > [class*=" icon-"] { cursor: default; }
 <div class="sect1">
 <h2 id="_sample_benchmark">2. Sample Benchmark</h2>
 <div class="sectionbody">
-<div class="sect2">
-<h3 id="_benchmark_execution">2.1. Benchmark Execution</h3>
 <div class="imageblock stretch kroki-format-svg kroki">
 <div class="content">
 <img src="https://kroki.io/plantuml/svg/eNqNkFELgjAcxN_9FAOf9QNMCEVWKerG3CCIHmb7Y4O1QidRnz7DXoKgHg_ud9xdOno1-Olsg_FqjQ8QQtH-ZLQGd4hWLxn2A4C7g7WXG85psy42cdnSJlkIpHpl3DeuA9MDzhj70ylbwuMy4z_t6jENgIWsChZx2YiiJgsHTqNlBiY7kktBkuCjPpWCSfGuHx6VBt_ZCTAnjHIRb0VdJUE6x8yHPAHhOla0" alt="diag03">
+</div>
+</div>
+<div class="sect2">
+<h3 id="_benchmark_configuration">2.1. Benchmark Configuration</h3>
+<div class="listingblock">
+<div class="title">benchmark_config.json</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
+    "static": {
+        "description": "Demo Benchmark",
+        "output_filename": "benchmark_output.json",
+        "report_filename": "benchmark_report.html",
+        "user_class": "DemoUser",
+        "user_params": {
+            "url": "http://localhost:7070"
+        },
+        "user_actions": {
+            "0": "onStart",
+            "1": "DELAY-10ms",
+            "2": "DELAY-20ms",
+            "3": "NOP",
+            "99": "onStop"
+        }
+    },
+    "contexts": [
+        {
+            "name": "Context-1",
+            "enabled": true,
+            "num_users": 4,
+            "num_threads": 2
+        },
+        {
+            "name": "Context-2",
+            "enabled": false,
+            "num_users": 4,
+            "num_threads": 4
+        }
+    ],
+    "benchmarks": [
+        {
+            "name": "Startup",
+            "actions": [
+                {"id": 0}
+            ]
+        },
+        {
+            "name": "Maximum Rate",
+            "enabled": false,
+            "time": {
+                "pre_warmup_duration": 5,
+                "warmup_duration": 10,
+                "benchmark_duration": 30,
+                "benchmark_repeat_count": 3
+            },
+            "throughput_rate": 0.0,
+            "actions": [
+                {"id": 1, "weight": 90},
+                {"id": 2, "weight": 10}
+            ]
+        },
+        {
+            "name": "Fixed Rate",
+            "enabled": true,
+            "time": {
+                "pre_warmup_duration": 5,
+                "warmup_duration": 10,
+                "benchmark_duration": 30,
+                "benchmark_repeat_count": 3
+            },
+            "throughput_rate": 100.0,
+            "actions": [
+                {"id": 1, "weight": 90},
+                {"id": 2, "weight": 10}
+            ]
+        },
+        {
+            "name": "NOP",
+            "enabled": false,
+            "time": {
+                "pre_warmup_duration": 5,
+                "warmup_duration": 10,
+                "benchmark_duration": 30,
+                "benchmark_repeat_count": 3
+            },
+            "throughput_rate": 0.0,
+            "actions": [
+                {"id": 3}
+            ]
+        },
+        {
+            "name": "Shutdown",
+            "actions": [
+                {"id": 99}
+            ]
+        }
+    ]
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_benchmark_user">2.2. Benchmark User</h3>
+<div class="listingblock">
+<div class="title">DemoUser.kt</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-kotlin hljs" data-lang="kotlin">import io.github.wfouche.tulip.api.TulipUser
+
+class DemoUser(userId: Int, threadId: Int) : TulipUser(userId, threadId) {
+
+    override fun onStart(): Boolean {
+        return true
+    }
+
+    override fun action1(): Boolean {
+        Thread.sleep(10)
+        return true
+    }
+
+    override fun action2(): Boolean {
+        Thread.sleep(20)
+        return true
+    }
+
+    override fun action3(): Boolean {
+        return true
+    }
+
+    override fun onStop(): Boolean {
+        return true
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_benchmark_app">2.3. Benchmark App</h3>
+<div class="listingblock">
+<div class="title">App.kt (JBang!)</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-kotlin hljs" data-lang="kotlin">///usr/bin/env jbang "$0" "$@" ; exit $?
+//DEPS com.github.ajalt.clikt:clikt-jvm:5.0.1
+//DEPS io.github.wfouche.tulip:tulip-runtime:2.0.0
+//JAVA 21
+//SOURCES DemoUser.kt
+
+import com.github.ajalt.clikt.core.*
+import com.github.ajalt.clikt.parameters.options.default
+import com.github.ajalt.clikt.parameters.options.option
+
+import io.github.wfouche.tulip.api.TulipApi
+import io.github.wfouche.tulip.api.TulipUserFactory
+
+class TulipCli : CliktCommand() {
+    private val configOpt by option("--config").default("benchmark_config.json")
+    override fun run() {
+        TulipApi.runTulip(configOpt, TulipUserFactory())
+    }
+}
+
+fun main(args: Array&lt;String&gt;) = TulipCli().main(args)S</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_run_script">2.4. Run Script</h3>
+<div class="listingblock">
+<div class="title">run_bench.sh</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">#!/bin/bash
+rm -f benchmark_report.html
+export JBANG_JAVA_OPTIONS="-server -Xmx1024m -XX:+UseZGC -XX:+ZGenerational"
+jbang run App.kt --config=benchmark_config.json
+echo ""
+lynx -dump -width 200 benchmark_report.html</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_console_output">2.5. Console Output</h3>
+<div class="paragraph">
+<p>This is the information that Tulip writes to the console when starting up after method TulipApi.runTulip() was called.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/image-tulip-console-1.png" alt="image tulip console 1">
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_performance_report_text">2.6. Performance Report - Text</h3>
+<div class="imageblock">
+<div class="content">
+<img src="images/image-tulip-report-1.png" alt="image tulip report 1">
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_performance_report_html">2.7. Performance Report - HTML</h3>
+<div class="imageblock">
+<div class="content">
+<img src="images/image-tulip-report-2.png" alt="image tulip report 2">
 </div>
 </div>
 </div>
@@ -908,7 +1113,7 @@ limitations under the License.</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2024-12-05 21:18:07 +0200
+Last updated 2024-12-05 21:48:33 +0200
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/highlight.min.js"></script>

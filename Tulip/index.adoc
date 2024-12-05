@@ -22,8 +22,6 @@ https://github.com/wfouche/Tulip[Tulip] is an advanced open-source software tool
 
 == Sample Benchmark
 
-=== Benchmark Execution
-
 [.stretch]
 [plantuml,diag03,svg]
 ----
@@ -46,6 +44,191 @@ end split
 #cadetblue:REPORT.HTML;
 @enduml
 ----
+
+=== Benchmark Configuration
+
+.benchmark_config.json
+[source,json,linenums]
+----
+{
+    "static": {
+        "description": "Demo Benchmark",
+        "output_filename": "benchmark_output.json",
+        "report_filename": "benchmark_report.html",
+        "user_class": "DemoUser",
+        "user_params": {
+            "url": "http://localhost:7070"
+        },
+        "user_actions": {
+            "0": "onStart",
+            "1": "DELAY-10ms",
+            "2": "DELAY-20ms",
+            "3": "NOP",
+            "99": "onStop"
+        }
+    },
+    "contexts": [
+        {
+            "name": "Context-1",
+            "enabled": true,
+            "num_users": 4,
+            "num_threads": 2
+        },
+        {
+            "name": "Context-2",
+            "enabled": false,
+            "num_users": 4,
+            "num_threads": 4
+        }
+    ],
+    "benchmarks": [
+        {
+            "name": "Startup",
+            "actions": [
+                {"id": 0}
+            ]
+        },
+        {
+            "name": "Maximum Rate",
+            "enabled": false,
+            "time": {
+                "pre_warmup_duration": 5,
+                "warmup_duration": 10,
+                "benchmark_duration": 30,
+                "benchmark_repeat_count": 3
+            },
+            "throughput_rate": 0.0,
+            "actions": [
+                {"id": 1, "weight": 90},
+                {"id": 2, "weight": 10}
+            ]
+        },
+        {
+            "name": "Fixed Rate",
+            "enabled": true,
+            "time": {
+                "pre_warmup_duration": 5,
+                "warmup_duration": 10,
+                "benchmark_duration": 30,
+                "benchmark_repeat_count": 3
+            },
+            "throughput_rate": 100.0,
+            "actions": [
+                {"id": 1, "weight": 90},
+                {"id": 2, "weight": 10}
+            ]
+        },
+        {
+            "name": "NOP",
+            "enabled": false,
+            "time": {
+                "pre_warmup_duration": 5,
+                "warmup_duration": 10,
+                "benchmark_duration": 30,
+                "benchmark_repeat_count": 3
+            },
+            "throughput_rate": 0.0,
+            "actions": [
+                {"id": 3}
+            ]
+        },
+        {
+            "name": "Shutdown",
+            "actions": [
+                {"id": 99}
+            ]
+        }
+    ]
+}
+----
+
+=== Benchmark User
+
+.DemoUser.kt
+[source,kotlin,linenums]
+----
+import io.github.wfouche.tulip.api.TulipUser
+
+class DemoUser(userId: Int, threadId: Int) : TulipUser(userId, threadId) {
+
+    override fun onStart(): Boolean {
+        return true
+    }
+
+    override fun action1(): Boolean {
+        Thread.sleep(10)
+        return true
+    }
+
+    override fun action2(): Boolean {
+        Thread.sleep(20)
+        return true
+    }
+
+    override fun action3(): Boolean {
+        return true
+    }
+
+    override fun onStop(): Boolean {
+        return true
+    }
+}
+----
+
+=== Benchmark App
+
+.App.kt (JBang!)
+[source,kotlin,linenums]
+----
+///usr/bin/env jbang "$0" "$@" ; exit $?
+//DEPS com.github.ajalt.clikt:clikt-jvm:5.0.1
+//DEPS io.github.wfouche.tulip:tulip-runtime:2.0.0
+//JAVA 21
+//SOURCES DemoUser.kt
+
+import com.github.ajalt.clikt.core.*
+import com.github.ajalt.clikt.parameters.options.default
+import com.github.ajalt.clikt.parameters.options.option
+
+import io.github.wfouche.tulip.api.TulipApi
+import io.github.wfouche.tulip.api.TulipUserFactory
+
+class TulipCli : CliktCommand() {
+    private val configOpt by option("--config").default("benchmark_config.json")
+    override fun run() {
+        TulipApi.runTulip(configOpt, TulipUserFactory())
+    }
+}
+
+fun main(args: Array<String>) = TulipCli().main(args)S
+----
+
+=== Run Script
+
+.run_bench.sh
+[source,bash,linenums]
+----
+#!/bin/bash
+rm -f benchmark_report.html
+export JBANG_JAVA_OPTIONS="-server -Xmx1024m -XX:+UseZGC -XX:+ZGenerational"
+jbang run App.kt --config=benchmark_config.json
+echo ""
+lynx -dump -width 200 benchmark_report.html
+----
+
+=== Console Output
+
+This is the information that Tulip writes to the console when starting up after method TulipApi.runTulip() was called.
+
+image::images/image-tulip-console-1.png[]
+
+=== Performance Report - Text
+
+image::images/image-tulip-report-1.png[]
+
+=== Performance Report - HTML
+
+image::images/image-tulip-report-2.png[]
 
 == Basic Principles
 

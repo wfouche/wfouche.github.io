@@ -944,26 +944,15 @@ class DemoUser(userId: Int, threadId: Int) : TulipUser(userId, threadId) {
 <div class="title">App.kt (JBang!)</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-kotlin hljs" data-lang="kotlin">///usr/bin/env jbang "$0" "$@" ; exit $?
-//DEPS com.github.ajalt.clikt:clikt-jvm:5.0.1
 //DEPS io.github.wfouche.tulip:tulip-runtime:2.0.0
 //JAVA 21
 //SOURCES DemoUser.kt
 
-import com.github.ajalt.clikt.core.*
-import com.github.ajalt.clikt.parameters.options.default
-import com.github.ajalt.clikt.parameters.options.option
+import io.github.wfouche.tulip.api.*
 
-import io.github.wfouche.tulip.api.TulipApi
-import io.github.wfouche.tulip.api.TulipUserFactory
-
-class TulipCli : CliktCommand() {
-    private val configOpt by option("--config").default("benchmark_config.json")
-    override fun run() {
-        TulipApi.runTulip(configOpt, TulipUserFactory())
-    }
-}
-
-fun main(args: Array&lt;String&gt;) = TulipCli().main(args)S</code></pre>
+fun main(args: Array&lt;String&gt;) {
+    TulipApi.runTulip("benchmark_config.json", TulipUserFactory())
+}</code></pre>
 </div>
 </div>
 </div>
@@ -975,7 +964,7 @@ fun main(args: Array&lt;String&gt;) = TulipCli().main(args)S</code></pre>
 <pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">#!/bin/bash
 rm -f benchmark_report.html
 export JBANG_JAVA_OPTIONS="-server -Xmx1024m -XX:+UseZGC -XX:+ZGenerational"
-jbang run App.kt --config=benchmark_config.json
+jbang run App.kt
 echo ""
 lynx -dump -width 200 benchmark_report.html</code></pre>
 </div>
@@ -1113,7 +1102,7 @@ limitations under the License.</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2024-12-05 21:51:42 +0200
+Last updated 2024-12-05 22:50:33 +0200
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/highlight.min.js"></script>

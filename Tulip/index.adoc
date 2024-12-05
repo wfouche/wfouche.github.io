@@ -12,8 +12,6 @@ image::tulip_logo.svg[width=128]
 
 https://github.com/wfouche/Tulip[Tulip] is an advanced open-source software tool designed for load testing, stress testing and performance regression testing. It serves as a robust solution for evaluating the performance and stability of web applications under varying conditions, ensuring they can handle high traffic and stress levels efficiently. Similar to well-known tools like JMeter, Gatling and Locust, Tulip provides powerful capabilities to simulate real-world scenarios and generate comprehensive reports, helping developers identify and resolve potential bottlenecks.
 
-<Under construction.>
-
 //
 // https://www.freepik.com/free-vector/tulip-flower-logo-gradient-colorful_41061958.htm
 //
@@ -21,6 +19,41 @@ https://github.com/wfouche/Tulip[Tulip] is an advanced open-source software tool
 //
 // https://support.freepik.com/s/article/Attribution-How-when-and-where
 //
+
+== Sample Benchmark
+
+=== Benchmark Execution
+
+[.stretch]
+[plantuml,diag03,svg]
+----
+@startuml
+split
+   -[hidden]->
+   #greenyellow:CONFIG.JSON;
+split again
+   -[hidden]->
+   #beige:APP;
+split again
+   -[hidden]->
+   #beige:USER.JAR;
+split again
+   -[hidden]->
+   #azure:TULIP-RUNTIME.JAR;
+end split
+:EXECUTE;
+#greenyellow:OUTPUT.JSON;
+#cadetblue:REPORT.HTML;
+@enduml
+----
+
+== Basic Principles
+
+<Under construction.>
+
+== Quick Start Guide
+
+<Under construction.>
 
 == Maven Central
 

@@ -755,15 +755,22 @@ span.icon > [class^="icon-"], span.icon > [class*=" icon-"] { cursor: default; }
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
 <li><a href="#_introduction">1. Introduction</a></li>
-<li><a href="#_maven_central">2. Maven Central</a>
+<li><a href="#_sample_benchmark">2. Sample Benchmark</a>
 <ul class="sectlevel2">
-<li><a href="#_maven_xml">2.1. Maven (xml)</a></li>
-<li><a href="#_gradle_groovy">2.2. Gradle (groovy)</a></li>
-<li><a href="#_gradle_kts">2.3. Gradle (kts)</a></li>
+<li><a href="#_benchmark_execution">2.1. Benchmark Execution</a></li>
 </ul>
 </li>
-<li><a href="#_tulip_releases">3. Tulip Releases</a></li>
-<li><a href="#_license">4. License</a></li>
+<li><a href="#_basic_principles">3. Basic Principles</a></li>
+<li><a href="#_quick_start_guide">4. Quick Start Guide</a></li>
+<li><a href="#_maven_central">5. Maven Central</a>
+<ul class="sectlevel2">
+<li><a href="#_maven_xml">5.1. Maven (xml)</a></li>
+<li><a href="#_gradle_groovy">5.2. Gradle (groovy)</a></li>
+<li><a href="#_gradle_kts">5.3. Gradle (kts)</a></li>
+</ul>
+</li>
+<li><a href="#_tulip_releases">6. Tulip Releases</a></li>
+<li><a href="#_license">7. License</a></li>
 </ul>
 </div>
 </div>
@@ -783,13 +790,39 @@ span.icon > [class^="icon-"], span.icon > [class*=" icon-"] { cursor: default; }
 <div class="paragraph">
 <p><a href="https://github.com/wfouche/Tulip">Tulip</a> is an advanced open-source software tool designed for load testing, stress testing and performance regression testing. It serves as a robust solution for evaluating the performance and stability of web applications under varying conditions, ensuring they can handle high traffic and stress levels efficiently. Similar to well-known tools like JMeter, Gatling and Locust, Tulip provides powerful capabilities to simulate real-world scenarios and generate comprehensive reports, helping developers identify and resolve potential bottlenecks.</p>
 </div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_sample_benchmark">2. Sample Benchmark</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_benchmark_execution">2.1. Benchmark Execution</h3>
+<div class="imageblock stretch kroki-format-svg kroki">
+<div class="content">
+<img src="https://kroki.io/plantuml/svg/eNqNkFELgjAcxN_9FAOf9QNMCEVWKerG3CCIHmb7Y4O1QidRnz7DXoKgHg_ud9xdOno1-Olsg_FqjQ8QQtH-ZLQGd4hWLxn2A4C7g7WXG85psy42cdnSJlkIpHpl3DeuA9MDzhj70ylbwuMy4z_t6jENgIWsChZx2YiiJgsHTqNlBiY7kktBkuCjPpWCSfGuHx6VBt_ZCTAnjHIRb0VdJUE6x8yHPAHhOla0" alt="diag03">
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_basic_principles">3. Basic Principles</h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p>&lt;Under construction.&gt;</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_maven_central">2. Maven Central</h2>
+<h2 id="_quick_start_guide">4. Quick Start Guide</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>&lt;Under construction.&gt;</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_maven_central">5. Maven Central</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Tulip is now available on Maven Central at:</p>
@@ -802,7 +835,7 @@ span.icon > [class^="icon-"], span.icon > [class*=" icon-"] { cursor: default; }
 </ul>
 </div>
 <div class="sect2">
-<h3 id="_maven_xml">2.1. Maven (xml)</h3>
+<h3 id="_maven_xml">5.1. Maven (xml)</h3>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;dependency&gt;
@@ -814,7 +847,7 @@ span.icon > [class^="icon-"], span.icon > [class*=" icon-"] { cursor: default; }
 </div>
 </div>
 <div class="sect2">
-<h3 id="_gradle_groovy">2.2. Gradle (groovy)</h3>
+<h3 id="_gradle_groovy">5.2. Gradle (groovy)</h3>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-groovy hljs" data-lang="groovy">implementation 'io.github.wfouche.tulip:tulip-runtime:2.0.0'</code></pre>
@@ -822,7 +855,7 @@ span.icon > [class^="icon-"], span.icon > [class*=" icon-"] { cursor: default; }
 </div>
 </div>
 <div class="sect2">
-<h3 id="_gradle_kts">2.3. Gradle (kts)</h3>
+<h3 id="_gradle_kts">5.3. Gradle (kts)</h3>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-kotlin hljs" data-lang="kotlin">implementation("io.github.wfouche.tulip:tulip-runtime:2.0.0")</code></pre>
@@ -832,7 +865,7 @@ span.icon > [class^="icon-"], span.icon > [class*=" icon-"] { cursor: default; }
 </div>
 </div>
 <div class="sect1">
-<h2 id="_tulip_releases">3. Tulip Releases</h2>
+<h2 id="_tulip_releases">6. Tulip Releases</h2>
 <div class="sectionbody">
 <div class="ulist">
 <ul>
@@ -851,7 +884,7 @@ span.icon > [class^="icon-"], span.icon > [class*=" icon-"] { cursor: default; }
 </div>
 </div>
 <div class="sect1">
-<h2 id="_license">4. License</h2>
+<h2 id="_license">7. License</h2>
 <div class="sectionbody">
 <div class="listingblock">
 <div class="content">
@@ -875,7 +908,7 @@ limitations under the License.</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2024-12-04 19:50:22 +0200
+Last updated 2024-12-05 21:18:07 +0200
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/highlight.min.js"></script>

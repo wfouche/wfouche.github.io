@@ -23,7 +23,7 @@ https://github.com/wfouche/Tulip[Tulip] is an advanced open-source software tool
 == Sample Benchmark
 
 [.stretch]
-[plantuml,diag03,svg]
+[plantuml,diag00,svg]
 ----
 @startuml
 split

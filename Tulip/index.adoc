@@ -177,7 +177,7 @@ class DemoUser(userId: Int, threadId: Int) : TulipUser(userId, threadId) {
 
 === Benchmark App
 
-.App.kt (JBang!)
+.App.kt (https://www.jbang.dev/)
 [source,kotlin,linenums]
 ----
 ///usr/bin/env jbang "$0" "$@" ; exit $?

@@ -236,37 +236,6 @@ image::images/image-tulip-report-2.png[]
 
 <Under construction.>
 
-== Maven Central
-
-Tulip is available on Maven Central at:
-
-* https://central.sonatype.com/namespace/io.github.wfouche.tulip
-
-=== Maven (xml)
-
-[source,xml]
-----
-<dependency>
-    <groupId>io.github.wfouche.tulip</groupId>
-    <artifactId>tulip-runtime</artifactId>
-    <version>2.0.0</version>
-</dependency>
-----
-
-=== Gradle (groovy)
-
-[source,groovy]
-----
-implementation 'io.github.wfouche.tulip:tulip-runtime:2.0.0'
-----
-
-=== Gradle (kts)
-
-[source,kotlin]
-----
-implementation("io.github.wfouche.tulip:tulip-runtime:2.0.0")
-----
-
 == Tulip Releases
 
 * [v2.0.1] - 2024/12/08

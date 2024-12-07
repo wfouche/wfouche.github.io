@@ -298,7 +298,7 @@ Implemented method `put(List<String> list)` to print a list of Strings to the Tu
 
 Maven Artifacts::
 
-Tulip is now available on Maven Central at https://central.sonatype.com/namespace/io.github.wfouche.tulip
+https://central.sonatype.com/namespace/io.github.wfouche.tulip
 +
 .Maven (xml)
 [source,xml]
@@ -334,7 +334,7 @@ Tulip has been in development for five years. This is the first public release o
 
 Maven Artifacts::
 
-Tulip is available on Maven Central at https://central.sonatype.com/namespace/io.github.wfouche.tulip
+https://central.sonatype.com/namespace/io.github.wfouche.tulip
 +
 .Maven (xml)
 [source,xml]

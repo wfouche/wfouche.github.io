@@ -959,17 +959,14 @@ class DemoUser(userId: Int, threadId: Int) : TulipUser(userId, threadId) {
 <div class="title">App.kt (<a href="https://www.jbang.dev/" class="bare">https://www.jbang.dev/</a>)</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-kotlin hljs" data-lang="kotlin">///usr/bin/env jbang "$0" "$@" ; exit $?
-//DEPS io.github.wfouche.tulip:tulip-runtime:2.0.0
+//DEPS io.github.wfouche.tulip:tulip-runtime:2.0.1
 //JAVA 21
 //SOURCES DemoUser.kt
 
 import io.github.wfouche.tulip.api.*
 
 fun main(args: Array&lt;String&gt;) {
-    TulipApi.runTulip(
-        "benchmark_config.json",
-        TulipUserFactory()
-    )
+    TulipApi.runTulip("benchmark_config.json", TulipUserFactory())
 }</code></pre>
 </div>
 </div>
@@ -1215,7 +1212,7 @@ limitations under the License.</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2024-12-07 11:49:43 +0200
+Last updated 2024-12-09 08:45:02 +0200
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/highlight.min.js"></script>

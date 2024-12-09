@@ -187,17 +187,14 @@ class DemoUser(userId: Int, threadId: Int) : TulipUser(userId, threadId) {
 [source,kotlin,linenums]
 ----
 ///usr/bin/env jbang "$0" "$@" ; exit $?
-//DEPS io.github.wfouche.tulip:tulip-runtime:2.0.0
+//DEPS io.github.wfouche.tulip:tulip-runtime:2.0.1
 //JAVA 21
 //SOURCES DemoUser.kt
 
 import io.github.wfouche.tulip.api.*
 
 fun main(args: Array<String>) {
-    TulipApi.runTulip(
-        "benchmark_config.json",
-        TulipUserFactory()
-    )
+    TulipApi.runTulip("benchmark_config.json", TulipUserFactory())
 }
 ----
 

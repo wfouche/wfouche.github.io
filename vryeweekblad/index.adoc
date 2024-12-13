@@ -4,6 +4,11 @@
 :stylesdir: css
 :stylesheet: adoc-foundation.css
 
+[NOTE]
+====
+https://www.vryeweekblad.com/uitgawes/2024-12-13-13-desember-2024/
+====
+
 == Nuus & Politiek
 
 === Die Catch-22 van die DA / RNE

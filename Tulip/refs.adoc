@@ -1,0 +1,12 @@
+= References
+
+== Open and Closed Models
+
+* https://medium.com/ibm-data-ai/benchmark-design-9245395e8609
+
+== Load Test Driven Development
+
+* https://citeseerx.ist.psu.edu/document?repid=rep1&type=pdf&doi=d08855653f9557b633304bb6d5b88d1a5b537302
+
+
+* https://www.cs.cmu.edu/~harchol/Papers/nsdi06.pdf

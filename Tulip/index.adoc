@@ -1,10 +1,10 @@
 = Tulip: Load Testing, Stress Testing and Performance Regression Testing
-v2.0.1
+v2.0.2
 :toc: left
 :sectnums:
 :source-highlighter: highlightjs
 :stylesdir: css
-:stylesheet: adoc-foundation.css
+:stylesheet: adoc-foundation-potion.css
 
 image::tulip_logo.svg[width=128]
 
@@ -194,10 +194,7 @@ class DemoUser(userId: Int, threadId: Int) : TulipUser(userId, threadId) {
 import io.github.wfouche.tulip.api.*
 
 fun main(args: Array<String>) {
-    TulipApi.runTulip(
-        "benchmark_config.json",
-        TulipUserFactory()
-    )
+    TulipApi.runTulip("benchmark_config.json", TulipUserFactory())
 }
 ----
 
@@ -237,6 +234,10 @@ image::images/image-tulip-report-2.png[]
 <Under construction.>
 
 == Tulip Releases
+
+* [v2.0.2] - 2024-12-15
+
+** https://github.com/wfouche/Tulip/releases?q=v2.0.2&expanded=true
 
 * [v2.0.1] - 2024/12/08
 

@@ -235,6 +235,10 @@ image::images/image-tulip-report-2.png[]
 
 == Tulip Releases
 
+* [v2.0.2] - 2024-12-15
+
+** https://github.com/wfouche/Tulip/releases?q=v2.0.2&expanded=true
+
 * [v2.0.1] - 2024/12/08
 
 ** https://github.com/wfouche/Tulip/releases?q=v2.0.1&expanded=true

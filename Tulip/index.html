@@ -781,8 +781,9 @@ span.icon > [class^="icon-"], span.icon > [class*=" icon-"] { cursor: default; }
 <li><a href="#_tulip_releases">6. Tulip Releases</a></li>
 <li><a href="#_changelog">Appendix A: Changelog</a>
 <ul class="sectlevel2">
-<li><a href="#_v2_0_1_2024_12_08">A.1. [v2.0.1] - 2024-12-08</a></li>
-<li><a href="#_v2_0_0_2024_12_01">A.2. [v2.0.0] - 2024-12-01</a></li>
+<li><a href="#_v2_0_2_2024_12_15">A.1. [v2.0.2] - 2024-12-15</a></li>
+<li><a href="#_v2_0_1_2024_12_08">A.2. [v2.0.1] - 2024-12-08</a></li>
+<li><a href="#_v2_0_0_2024_12_01">A.3. [v2.0.0] - 2024-12-01</a></li>
 </ul>
 </li>
 <li><a href="#_license">Appendix B: License</a></li>
@@ -825,9 +826,9 @@ span.icon > [class^="icon-"], span.icon > [class*=" icon-"] { cursor: default; }
 <div class="sect1">
 <h2 id="_sample_benchmark">3. Sample Benchmark</h2>
 <div class="sectionbody">
-<div class="imageblock stretch kroki-format-svg kroki">
+<div class="imageblock stretch">
 <div class="content">
-<img src="https://kroki.io/plantuml/svg/eNqNkFELgjAcxN_9FAOf9QNMCEVWKerG3CCIHmb7Y4O1QidRnz7DXoKgHg_ud9xdOno1-Olsg_FqjQ8QQtH-ZLQGd4hWLxn2A4C7g7WXG85psy42cdnSJlkIpHpl3DeuA9MDzhj70ylbwuMy4z_t6jENgIWsChZx2YiiJgsHTqNlBiY7kktBkuCjPpWCSfGuHx6VBt_ZCTAnjHIRb0VdJUE6x8yHPAHhOla0" alt="diag00">
+<img src="diag00.svg" alt="diag00" width="430" height="266">
 </div>
 </div>
 <div class="sect2">
@@ -968,7 +969,7 @@ class DemoUser(userId: Int, threadId: Int) : TulipUser(userId, threadId) {
 <div class="title">App.kt (<a href="https://www.jbang.dev/" class="bare">https://www.jbang.dev/</a>)</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-kotlin hljs" data-lang="kotlin">///usr/bin/env jbang "$0" "$@" ; exit $?
-//DEPS io.github.wfouche.tulip:tulip-runtime:2.0.0
+//DEPS io.github.wfouche.tulip:tulip-runtime:2.0.1
 //JAVA 21
 //SOURCES DemoUser.kt
 
@@ -1082,9 +1083,84 @@ lynx -dump -width 200 benchmark_report.html</code></pre>
 <h2 id="_changelog">Appendix A: Changelog</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_v2_0_1_2024_12_08">A.1. [v2.0.1] - 2024-12-08</h3>
+<h3 id="_v2_0_2_2024_12_15">A.1. [v2.0.2] - 2024-12-15</h3>
 <div class="sect3">
-<h4 id="_tulipapi">A.1.1. TulipApi</h4>
+<h4 id="_release_notes">A.1.1. Release Notes</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Allow JSON primitive types to be specified for user parameters for action objects.</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
+  "user_params": {
+    "url": "http://localhost",
+    "debug": false,
+    "http_port": 7070
+  }
+}</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Use method <code>getProcessCpuTime</code> from class <code>OperatingSystemMXBean</code> to accurately determine the CPU utilization of Tulip.</p>
+</li>
+<li>
+<p>Display the current heap usage to the Tulip console in  GB and not bytes.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_release_information">A.1.2. Release Information</h4>
+<div class="paragraph">
+<p>Tulip is now available on Maven Central at:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://central.sonatype.com/namespace/io.github.wfouche.tulip" class="bare">https://central.sonatype.com/namespace/io.github.wfouche.tulip</a></p>
+<div class="listingblock">
+<div class="title">Maven (xml)</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;dependency&gt;
+    &lt;groupId&gt;io.github.wfouche.tulip&lt;/groupId&gt;
+    &lt;artifactId&gt;tulip-runtime&lt;/artifactId&gt;
+    &lt;version&gt;2.0.2&lt;/version&gt;
+&lt;/dependency&gt;</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Gradle (Groovy)</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-groovy hljs" data-lang="groovy">implementation 'io.github.wfouche.tulip:tulip-runtime:2.0.2'</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Gradle (kts)</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-kotlin hljs" data-lang="kotlin">implementation("io.github.wfouche.tulip:tulip-runtime:2.0.2")</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Documentation:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://wfouche.github.io/Tulip/" class="bare">https://wfouche.github.io/Tulip/</a></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_v2_0_1_2024_12_08">A.2. [v2.0.1] - 2024-12-08</h3>
+<div class="sect3">
+<h4 id="_tulipapi">A.2.1. TulipApi</h4>
 <div class="paragraph">
 <p>The <code>runTulip</code> method can now be invoked without providing a <code>TulipUserFactory</code> object. In special cases this might still be needed, so the old way of invoking Tulip continues to be supported.</p>
 </div>
@@ -1118,18 +1194,18 @@ public class App {
 </div>
 </div>
 <div class="sect3">
-<h4 id="_tulipconsole">A.1.2. TulipConsole</h4>
+<h4 id="_tulipconsole">A.2.2. TulipConsole</h4>
 <div class="paragraph">
 <p>Implemented method <code>put(List&lt;String&gt; list)</code> to print a list of Strings to the Tulip console (thread-safe output device). Method <code>put(String text)</code> continues to be supported.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_release_information">A.1.3. Release Information</h4>
+<h4 id="_release_information_2">A.2.3. Release Information</h4>
 <div class="dlist">
 <dl>
 <dt class="hdlist1">Maven Artifacts</dt>
 <dd>
-<p>Tulip is now available on Maven Central at <a href="https://central.sonatype.com/namespace/io.github.wfouche.tulip" class="bare">https://central.sonatype.com/namespace/io.github.wfouche.tulip</a></p>
+<p><a href="https://central.sonatype.com/namespace/io.github.wfouche.tulip" class="bare">https://central.sonatype.com/namespace/io.github.wfouche.tulip</a></p>
 <div class="listingblock">
 <div class="title">Maven (xml)</div>
 <div class="content">
@@ -1162,17 +1238,17 @@ public class App {
 </div>
 </div>
 <div class="sect2">
-<h3 id="_v2_0_0_2024_12_01">A.2. [v2.0.0] - 2024-12-01</h3>
+<h3 id="_v2_0_0_2024_12_01">A.3. [v2.0.0] - 2024-12-01</h3>
 <div class="paragraph">
 <p>Tulip has been in development for five years. This is the first public release of the Tulip load testing framework.</p>
 </div>
 <div class="sect3">
-<h4 id="_release_information_2">A.2.1. Release Information</h4>
+<h4 id="_release_information_3">A.3.1. Release Information</h4>
 <div class="dlist">
 <dl>
 <dt class="hdlist1">Maven Artifacts</dt>
 <dd>
-<p>Tulip is available on Maven Central at <a href="https://central.sonatype.com/namespace/io.github.wfouche.tulip" class="bare">https://central.sonatype.com/namespace/io.github.wfouche.tulip</a></p>
+<p><a href="https://central.sonatype.com/namespace/io.github.wfouche.tulip" class="bare">https://central.sonatype.com/namespace/io.github.wfouche.tulip</a></p>
 <div class="listingblock">
 <div class="title">Maven (xml)</div>
 <div class="content">
@@ -1231,7 +1307,7 @@ limitations under the License.</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2024-12-19 09:13:25 +0200
+Last updated 2024-12-19 20:13:02 +0200
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/highlight.min.js"></script>

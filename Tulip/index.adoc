@@ -225,11 +225,11 @@ This is the information that Tulip writes to the console when starting up after 
 
 image::images/image-tulip-console-1.png[]
 
-=== Performance Report - Text
+=== Performance Report - Console
 
 image::images/image-tulip-report-1.png[]
 
-=== Performance Report - HTML
+=== Performance Report - Browser
 
 image::images/image-tulip-report-2.png[]
 

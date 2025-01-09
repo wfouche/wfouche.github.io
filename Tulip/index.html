@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 2.0.23">
-<meta name="author" content="v2.0.2">
+<meta name="author" content="v2.1.1">
 <title>Tulip: Load Testing, Stress Testing and Performance Regression Testing</title>
 <style>
 @import url(//cdnjs.cloudflare.com/ajax/libs/font-awesome/3.2.0/css/font-awesome.css);
@@ -758,7 +758,7 @@ span.icon > [class^="icon-"], span.icon > [class*=" icon-"] { cursor: default; }
 <div id="header">
 <h1>Tulip: Load Testing, Stress Testing and Performance Regression Testing</h1>
 <div class="details">
-<span id="author" class="author">v2.0.2</span><br>
+<span id="author" class="author">v2.1.1</span><br>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
@@ -767,10 +767,10 @@ span.icon > [class^="icon-"], span.icon > [class*=" icon-"] { cursor: default; }
 <li><a href="#_source_code">2. Source Code</a></li>
 <li><a href="#_sample_benchmark">3. Sample Benchmark</a>
 <ul class="sectlevel2">
-<li><a href="#_benchmark_configuration">3.1. Benchmark Configuration</a></li>
-<li><a href="#_benchmark_user">3.2. Benchmark User</a></li>
-<li><a href="#_benchmark_app">3.3. Benchmark App</a></li>
-<li><a href="#_run_script">3.4. Run Script</a></li>
+<li><a href="#_benchmark_app">3.1. Benchmark App</a></li>
+<li><a href="#_benchmark_user_class">3.2. Benchmark User Class</a></li>
+<li><a href="#_run_script">3.3. Run Script</a></li>
+<li><a href="#_benchmark_configuration">3.4. Benchmark Configuration</a></li>
 <li><a href="#_console_output">3.5. Console Output</a></li>
 <li><a href="#_performance_report_text">3.6. Performance Report - Text</a></li>
 <li><a href="#_performance_report_html">3.7. Performance Report - HTML</a></li>
@@ -779,14 +779,7 @@ span.icon > [class^="icon-"], span.icon > [class*=" icon-"] { cursor: default; }
 <li><a href="#_basic_principles">4. Basic Principles</a></li>
 <li><a href="#_quick_start_guide">5. Quick Start Guide</a></li>
 <li><a href="#_tulip_releases">6. Tulip Releases</a></li>
-<li><a href="#_changelog">Appendix A: Changelog</a>
-<ul class="sectlevel2">
-<li><a href="#_v2_0_2_2024_12_15">A.1. [v2.0.2] - 2024-12-15</a></li>
-<li><a href="#_v2_0_1_2024_12_08">A.2. [v2.0.1] - 2024-12-08</a></li>
-<li><a href="#_v2_0_0_2024_12_01">A.3. [v2.0.0] - 2024-12-01</a></li>
-</ul>
-</li>
-<li><a href="#_license">Appendix B: License</a></li>
+<li><a href="#_license">Appendix A: License</a></li>
 </ul>
 </div>
 </div>
@@ -826,111 +819,31 @@ span.icon > [class^="icon-"], span.icon > [class*=" icon-"] { cursor: default; }
 <div class="sect1">
 <h2 id="_sample_benchmark">3. Sample Benchmark</h2>
 <div class="sectionbody">
-<div class="imageblock stretch">
+<div class="imageblock stretch kroki-format-svg kroki">
 <div class="content">
-<img src="diag00.svg" alt="diag00" width="430" height="266">
+<img src="https://kroki.io/plantuml/svg/eNqNkFELgjAcxN_9FAOf9QNMCEVWKerG3CCIHmb7Y4O1QidRnz7DXoKgHg_ud9xdOno1-Olsg_FqjQ8QQtH-ZLQGd4hWLxn2A4C7g7WXG85psy42cdnSJlkIpHpl3DeuA9MDzhj70ylbwuMy4z_t6jENgIWsChZx2YiiJgsHTqNlBiY7kktBkuCjPpWCSfGuHx6VBt_ZCTAnjHIRb0VdJUE6x8yHPAHhOla0" alt="diag00">
 </div>
 </div>
 <div class="sect2">
-<h3 id="_benchmark_configuration">3.1. Benchmark Configuration</h3>
+<h3 id="_benchmark_app">3.1. Benchmark App</h3>
 <div class="listingblock">
-<div class="title">benchmark_config.json</div>
+<div class="title">App.kt (<a href="https://www.jbang.dev/" class="bare">https://www.jbang.dev/</a>)</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
-    "static": {
-        "description": "Demo Benchmark",
-        "output_filename": "benchmark_output.json",
-        "report_filename": "benchmark_report.html",
-        "user_class": "DemoUser",
-        "user_params": {
-            "url": "http://localhost:7070"
-        },
-        "user_actions": {
-            "0": "onStart",
-            "1": "DELAY-10ms",
-            "2": "DELAY-20ms",
-            "3": "NOP",
-            "99": "onStop"
-        }
-    },
-    "contexts": [
-        {
-            "name": "Context-1",
-            "enabled": true,
-            "num_users": 4,
-            "num_threads": 2
-        },
-        {
-            "name": "Context-2",
-            "enabled": false,
-            "num_users": 4,
-            "num_threads": 4
-        }
-    ],
-    "benchmarks": [
-        {
-            "name": "Startup",
-            "actions": [
-                {"id": 0}
-            ]
-        },
-        {
-            "name": "Maximum Rate",
-            "enabled": false,
-            "time": {
-                "pre_warmup_duration": 5,
-                "warmup_duration": 10,
-                "benchmark_duration": 30,
-                "benchmark_repeat_count": 3
-            },
-            "throughput_rate": 0.0,
-            "actions": [
-                {"id": 1, "weight": 90},
-                {"id": 2, "weight": 10}
-            ]
-        },
-        {
-            "name": "Fixed Rate",
-            "enabled": true,
-            "time": {
-                "pre_warmup_duration": 5,
-                "warmup_duration": 10,
-                "benchmark_duration": 30,
-                "benchmark_repeat_count": 3
-            },
-            "throughput_rate": 100.0,
-            "actions": [
-                {"id": 1, "weight": 90},
-                {"id": 2, "weight": 10}
-            ]
-        },
-        {
-            "name": "NOP",
-            "enabled": false,
-            "time": {
-                "pre_warmup_duration": 5,
-                "warmup_duration": 10,
-                "benchmark_duration": 30,
-                "benchmark_repeat_count": 3
-            },
-            "throughput_rate": 0.0,
-            "actions": [
-                {"id": 3}
-            ]
-        },
-        {
-            "name": "Shutdown",
-            "actions": [
-                {"id": 99}
-            ]
-        }
-    ]
+<pre class="highlightjs highlight"><code class="language-kotlin hljs" data-lang="kotlin">///usr/bin/env jbang "$0" "$@" ; exit $?
+//DEPS io.github.wfouche.tulip:tulip-runtime:2.1.1
+//JAVA 21
+//SOURCES DemoUser.kt
+
+import io.github.wfouche.tulip.api.*
+
+fun main(args: Array&lt;String&gt;) {
+    TulipApi.runTulip("benchmark_config.jsonc")
 }</code></pre>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_benchmark_user">3.2. Benchmark User</h3>
+<h3 id="_benchmark_user_class">3.2. Benchmark User Class</h3>
 <div class="listingblock">
 <div class="title">DemoUser.kt</div>
 <div class="content">
@@ -964,25 +877,7 @@ class DemoUser(userId: Int, threadId: Int) : TulipUser(userId, threadId) {
 </div>
 </div>
 <div class="sect2">
-<h3 id="_benchmark_app">3.3. Benchmark App</h3>
-<div class="listingblock">
-<div class="title">App.kt (<a href="https://www.jbang.dev/" class="bare">https://www.jbang.dev/</a>)</div>
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-kotlin hljs" data-lang="kotlin">///usr/bin/env jbang "$0" "$@" ; exit $?
-//DEPS io.github.wfouche.tulip:tulip-runtime:2.0.1
-//JAVA 21
-//SOURCES DemoUser.kt
-
-import io.github.wfouche.tulip.api.*
-
-fun main(args: Array&lt;String&gt;) {
-    TulipApi.runTulip("benchmark_config.json", TulipUserFactory())
-}</code></pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_run_script">3.4. Run Script</h3>
+<h3 id="_run_script">3.3. Run Script</h3>
 <div class="listingblock">
 <div class="title">run_bench.sh</div>
 <div class="content">
@@ -992,6 +887,112 @@ export JBANG_JAVA_OPTIONS="-server -Xmx1024m -XX:+UseZGC -XX:+ZGenerational"
 jbang run App.kt
 echo ""
 lynx -dump -width 200 benchmark_report.html</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_benchmark_configuration">3.4. Benchmark Configuration</h3>
+<div class="listingblock">
+<div class="title">benchmark_config.jsonc</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
+    "actions": {
+        "description": "Demo Benchmark",
+        "output_filename": "benchmark_output.json",
+        "report_filename": "benchmark_report.html",
+        "user_class": "DemoUser",
+        "user_params": {
+            "url": "http://localhost:7070"
+        },
+        "user_actions": {
+            "0": "onStart",
+            "1": "DELAY-10ms",
+            "2": "DELAY-20ms",
+            "3": "NOP",
+            "99": "onStop"
+        }
+    },
+    "contexts": {
+        "Context-1": {
+            "enabled": true,
+            "num_users": 4,
+            "num_threads": 2
+        },
+        "Context-2": {
+            "enabled": false,
+            "num_users": 4,
+            "num_threads": 4
+        }
+    },
+    "benchmarks": {
+        "Startup": {
+            "actions": [
+                {
+                    "id": 0
+                }
+            ]
+        },
+        "Maximum Rate": {
+            "time": {
+                "pre_warmup_duration": 5,
+                "warmup_duration": 10,
+                "benchmark_duration": 30,
+                "benchmark_repeat_count": 3
+            },
+            "throughput_rate": 0.0,
+            "actions": [
+                {
+                    "id": 1,
+                    "weight": 90
+                },
+                {
+                    "id": 2,
+                    "weight": 10
+                }
+            ]
+        },
+        "Fixed Rate": {
+            "time": {
+                "pre_warmup_duration": 5,
+                "warmup_duration": 10,
+                "benchmark_duration": 30,
+                "benchmark_repeat_count": 3
+            },
+            "throughput_rate": 100.0,
+            "actions": [
+                {
+                    "id": 1,
+                    "weight": 90
+                },
+                {
+                    "id": 2,
+                    "weight": 10
+                }
+            ]
+        },
+        "NOP": {
+            "time": {
+                "pre_warmup_duration": 5,
+                "warmup_duration": 10,
+                "benchmark_duration": 30,
+                "benchmark_repeat_count": 3
+            },
+            "throughput_rate": 0.0,
+            "actions": [
+                {
+                    "id": 3
+                }
+            ]
+        },
+        "Shutdown": {
+            "actions": [
+                {
+                    "id": 99
+                }
+            ]
+        }
+    }
+}</code></pre>
 </div>
 </div>
 </div>
@@ -1046,6 +1047,16 @@ lynx -dump -width 200 benchmark_report.html</code></pre>
 <div class="ulist">
 <ul>
 <li>
+<p>[v2.1.1] - 2025-01-09</p>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://github.com/wfouche/Tulip/releases?q=v2.1.1&amp;expanded=true" class="bare">https://github.com/wfouche/Tulip/releases?q=v2.1.1&amp;expanded=true</a></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
 <p>[v2.0.2] - 2024-12-15</p>
 <div class="ulist">
 <ul>
@@ -1080,210 +1091,7 @@ lynx -dump -width 200 benchmark_report.html</code></pre>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_changelog">Appendix A: Changelog</h2>
-<div class="sectionbody">
-<div class="sect2">
-<h3 id="_v2_0_2_2024_12_15">A.1. [v2.0.2] - 2024-12-15</h3>
-<div class="sect3">
-<h4 id="_release_notes">A.1.1. Release Notes</h4>
-<div class="ulist">
-<ul>
-<li>
-<p>Allow JSON primitive types to be specified for user parameters for action objects.</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
-  "user_params": {
-    "url": "http://localhost",
-    "debug": false,
-    "http_port": 7070
-  }
-}</code></pre>
-</div>
-</div>
-</li>
-<li>
-<p>Use method <code>getProcessCpuTime</code> from class <code>OperatingSystemMXBean</code> to accurately determine the CPU utilization of Tulip.</p>
-</li>
-<li>
-<p>Display the current heap usage to the Tulip console in  GB and not bytes.</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_release_information">A.1.2. Release Information</h4>
-<div class="paragraph">
-<p>Tulip is now available on Maven Central at:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><a href="https://central.sonatype.com/namespace/io.github.wfouche.tulip" class="bare">https://central.sonatype.com/namespace/io.github.wfouche.tulip</a></p>
-<div class="listingblock">
-<div class="title">Maven (xml)</div>
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;dependency&gt;
-    &lt;groupId&gt;io.github.wfouche.tulip&lt;/groupId&gt;
-    &lt;artifactId&gt;tulip-runtime&lt;/artifactId&gt;
-    &lt;version&gt;2.0.2&lt;/version&gt;
-&lt;/dependency&gt;</code></pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="title">Gradle (Groovy)</div>
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-groovy hljs" data-lang="groovy">implementation 'io.github.wfouche.tulip:tulip-runtime:2.0.2'</code></pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="title">Gradle (kts)</div>
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-kotlin hljs" data-lang="kotlin">implementation("io.github.wfouche.tulip:tulip-runtime:2.0.2")</code></pre>
-</div>
-</div>
-</li>
-<li>
-<p>Documentation:</p>
-<div class="ulist">
-<ul>
-<li>
-<p><a href="https://wfouche.github.io/Tulip/" class="bare">https://wfouche.github.io/Tulip/</a></p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_v2_0_1_2024_12_08">A.2. [v2.0.1] - 2024-12-08</h3>
-<div class="sect3">
-<h4 id="_tulipapi">A.2.1. TulipApi</h4>
-<div class="paragraph">
-<p>The <code>runTulip</code> method can now be invoked without providing a <code>TulipUserFactory</code> object. In special cases this might still be needed, so the old way of invoking Tulip continues to be supported.</p>
-</div>
-<div class="listingblock">
-<div class="title">Simplified</div>
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">package org.example;
-
-import io.github.wfouche.tulip.api.*;
-
-public class App {
-    public static void main(String[] args) {
-        TulipApi.runTulip("./benchmark_config.json");
-    }
-}</code></pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="title">Original</div>
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">package org.example;
-
-import io.github.wfouche.tulip.api.*;
-
-public class App {
-    public static void main(String[] args) {
-        TulipApi.runTulip("./benchmark_config.json", new TulipUserFactory());
-    }
-}</code></pre>
-</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_tulipconsole">A.2.2. TulipConsole</h4>
-<div class="paragraph">
-<p>Implemented method <code>put(List&lt;String&gt; list)</code> to print a list of Strings to the Tulip console (thread-safe output device). Method <code>put(String text)</code> continues to be supported.</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_release_information_2">A.2.3. Release Information</h4>
-<div class="dlist">
-<dl>
-<dt class="hdlist1">Maven Artifacts</dt>
-<dd>
-<p><a href="https://central.sonatype.com/namespace/io.github.wfouche.tulip" class="bare">https://central.sonatype.com/namespace/io.github.wfouche.tulip</a></p>
-<div class="listingblock">
-<div class="title">Maven (xml)</div>
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;dependency&gt;
-    &lt;groupId&gt;io.github.wfouche.tulip&lt;/groupId&gt;
-    &lt;artifactId&gt;tulip-runtime&lt;/artifactId&gt;
-    &lt;version&gt;2.0.1&lt;/version&gt;
-&lt;/dependency&gt;</code></pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="title">Gradle (Groovy)</div>
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-groovy hljs" data-lang="groovy">implementation 'io.github.wfouche.tulip:tulip-runtime:2.0.1'</code></pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="title">Gradle (kts)</div>
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-kotlin hljs" data-lang="kotlin">implementation("io.github.wfouche.tulip:tulip-runtime:2.0.1")</code></pre>
-</div>
-</div>
-</dd>
-<dt class="hdlist1">Documentation</dt>
-<dd>
-<p><a href="https://wfouche.github.io/Tulip/" class="bare">https://wfouche.github.io/Tulip/</a></p>
-</dd>
-</dl>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_v2_0_0_2024_12_01">A.3. [v2.0.0] - 2024-12-01</h3>
-<div class="paragraph">
-<p>Tulip has been in development for five years. This is the first public release of the Tulip load testing framework.</p>
-</div>
-<div class="sect3">
-<h4 id="_release_information_3">A.3.1. Release Information</h4>
-<div class="dlist">
-<dl>
-<dt class="hdlist1">Maven Artifacts</dt>
-<dd>
-<p><a href="https://central.sonatype.com/namespace/io.github.wfouche.tulip" class="bare">https://central.sonatype.com/namespace/io.github.wfouche.tulip</a></p>
-<div class="listingblock">
-<div class="title">Maven (xml)</div>
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;dependency&gt;
-    &lt;groupId&gt;io.github.wfouche.tulip&lt;/groupId&gt;
-    &lt;artifactId&gt;tulip-runtime&lt;/artifactId&gt;
-    &lt;version&gt;2.0.0&lt;/version&gt;
-&lt;/dependency&gt;</code></pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="title">Gradle (Groovy)</div>
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-groovy hljs" data-lang="groovy">implementation 'io.github.wfouche.tulip:tulip-runtime:2.0.0'</code></pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="title">Gradle (kts)</div>
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-kotlin hljs" data-lang="kotlin">implementation("io.github.wfouche.tulip:tulip-runtime:2.0.0")</code></pre>
-</div>
-</div>
-</dd>
-<dt class="hdlist1">Documentation</dt>
-<dd>
-<p><a href="https://wfouche.github.io/Tulip/" class="bare">https://wfouche.github.io/Tulip/</a></p>
-</dd>
-</dl>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_license">Appendix B: License</h2>
+<h2 id="_license">Appendix A: License</h2>
 <div class="sectionbody">
 <div class="listingblock">
 <div class="content">
@@ -1307,7 +1115,7 @@ limitations under the License.</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2024-12-19 20:13:02 +0200
+Last updated 2025-01-09 09:52:49 +0200
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/highlight.min.js"></script>

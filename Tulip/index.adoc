@@ -1,5 +1,5 @@
 = Tulip: Load Testing, Stress Testing and Performance Regression Testing
-v2.0.2
+v2.1.1
 :toc: left
 :sectnums:
 :source-highlighter: highlightjs
@@ -51,104 +51,24 @@ end split
 @enduml
 ----
 
-=== Benchmark Configuration
+=== Benchmark App
 
-.benchmark_config.json
-[source,json,linenums]
+.App.kt (https://www.jbang.dev/)
+[source,kotlin,linenums]
 ----
-{
-    "static": {
-        "description": "Demo Benchmark",
-        "output_filename": "benchmark_output.json",
-        "report_filename": "benchmark_report.html",
-        "user_class": "DemoUser",
-        "user_params": {
-            "url": "http://localhost:7070"
-        },
-        "user_actions": {
-            "0": "onStart",
-            "1": "DELAY-10ms",
-            "2": "DELAY-20ms",
-            "3": "NOP",
-            "99": "onStop"
-        }
-    },
-    "contexts": [
-        {
-            "name": "Context-1",
-            "enabled": true,
-            "num_users": 4,
-            "num_threads": 2
-        },
-        {
-            "name": "Context-2",
-            "enabled": false,
-            "num_users": 4,
-            "num_threads": 4
-        }
-    ],
-    "benchmarks": [
-        {
-            "name": "Startup",
-            "actions": [
-                {"id": 0}
-            ]
-        },
-        {
-            "name": "Maximum Rate",
-            "enabled": false,
-            "time": {
-                "pre_warmup_duration": 5,
-                "warmup_duration": 10,
-                "benchmark_duration": 30,
-                "benchmark_repeat_count": 3
-            },
-            "throughput_rate": 0.0,
-            "actions": [
-                {"id": 1, "weight": 90},
-                {"id": 2, "weight": 10}
-            ]
-        },
-        {
-            "name": "Fixed Rate",
-            "enabled": true,
-            "time": {
-                "pre_warmup_duration": 5,
-                "warmup_duration": 10,
-                "benchmark_duration": 30,
-                "benchmark_repeat_count": 3
-            },
-            "throughput_rate": 100.0,
-            "actions": [
-                {"id": 1, "weight": 90},
-                {"id": 2, "weight": 10}
-            ]
-        },
-        {
-            "name": "NOP",
-            "enabled": false,
-            "time": {
-                "pre_warmup_duration": 5,
-                "warmup_duration": 10,
-                "benchmark_duration": 30,
-                "benchmark_repeat_count": 3
-            },
-            "throughput_rate": 0.0,
-            "actions": [
-                {"id": 3}
-            ]
-        },
-        {
-            "name": "Shutdown",
-            "actions": [
-                {"id": 99}
-            ]
-        }
-    ]
+///usr/bin/env jbang "$0" "$@" ; exit $?
+//DEPS io.github.wfouche.tulip:tulip-runtime:2.1.1
+//JAVA 21
+//SOURCES DemoUser.kt
+
+import io.github.wfouche.tulip.api.*
+
+fun main(args: Array<String>) {
+    TulipApi.runTulip("benchmark_config.jsonc")
 }
 ----
 
-=== Benchmark User
+=== Benchmark User Class
 
 .DemoUser.kt
 [source,kotlin,linenums]
@@ -181,23 +101,6 @@ class DemoUser(userId: Int, threadId: Int) : TulipUser(userId, threadId) {
 }
 ----
 
-=== Benchmark App
-
-.App.kt (https://www.jbang.dev/)
-[source,kotlin,linenums]
-----
-///usr/bin/env jbang "$0" "$@" ; exit $?
-//DEPS io.github.wfouche.tulip:tulip-runtime:2.0.1
-//JAVA 21
-//SOURCES DemoUser.kt
-
-import io.github.wfouche.tulip.api.*
-
-fun main(args: Array<String>) {
-    TulipApi.runTulip("benchmark_config.json", TulipUserFactory())
-}
-----
-
 === Run Script
 
 .run_bench.sh
@@ -209,6 +112,111 @@ export JBANG_JAVA_OPTIONS="-server -Xmx1024m -XX:+UseZGC -XX:+ZGenerational"
 jbang run App.kt
 echo ""
 lynx -dump -width 200 benchmark_report.html
+----
+
+=== Benchmark Configuration
+
+.benchmark_config.jsonc
+[source,json,linenums]
+----
+{
+    "actions": {
+        "description": "Demo Benchmark",
+        "output_filename": "benchmark_output.json",
+        "report_filename": "benchmark_report.html",
+        "user_class": "DemoUser",
+        "user_params": {
+            "url": "http://localhost:7070"
+        },
+        "user_actions": {
+            "0": "onStart",
+            "1": "DELAY-10ms",
+            "2": "DELAY-20ms",
+            "3": "NOP",
+            "99": "onStop"
+        }
+    },
+    "contexts": {
+        "Context-1": {
+            "enabled": true,
+            "num_users": 4,
+            "num_threads": 2
+        },
+        "Context-2": {
+            "enabled": false,
+            "num_users": 4,
+            "num_threads": 4
+        }
+    },
+    "benchmarks": {
+        "Startup": {
+            "actions": [
+                {
+                    "id": 0
+                }
+            ]
+        },
+        "Maximum Rate": {
+            "time": {
+                "pre_warmup_duration": 5,
+                "warmup_duration": 10,
+                "benchmark_duration": 30,
+                "benchmark_repeat_count": 3
+            },
+            "throughput_rate": 0.0,
+            "actions": [
+                {
+                    "id": 1,
+                    "weight": 90
+                },
+                {
+                    "id": 2,
+                    "weight": 10
+                }
+            ]
+        },
+        "Fixed Rate": {
+            "time": {
+                "pre_warmup_duration": 5,
+                "warmup_duration": 10,
+                "benchmark_duration": 30,
+                "benchmark_repeat_count": 3
+            },
+            "throughput_rate": 100.0,
+            "actions": [
+                {
+                    "id": 1,
+                    "weight": 90
+                },
+                {
+                    "id": 2,
+                    "weight": 10
+                }
+            ]
+        },
+        "NOP": {
+            "time": {
+                "pre_warmup_duration": 5,
+                "warmup_duration": 10,
+                "benchmark_duration": 30,
+                "benchmark_repeat_count": 3
+            },
+            "throughput_rate": 0.0,
+            "actions": [
+                {
+                    "id": 3
+                }
+            ]
+        },
+        "Shutdown": {
+            "actions": [
+                {
+                    "id": 99
+                }
+            ]
+        }
+    }
+}
 ----
 
 === Console Output
@@ -235,6 +243,10 @@ image::images/image-tulip-report-2.png[]
 
 == Tulip Releases
 
+* [v2.1.1] - 2025-01-09
+
+** https://github.com/wfouche/Tulip/releases?q=v2.1.1&expanded=true
+
 * [v2.0.2] - 2024-12-15
 
 ** https://github.com/wfouche/Tulip/releases?q=v2.0.2&expanded=true
@@ -252,170 +264,6 @@ image::images/image-tulip-report-2.png[]
 // https://github.com/errata-ai/vale
 
 // https://redhat-documentation.github.io/vale-at-red-hat/docs/main/user-guide/asciidoc-style-for-vale/
-
-[appendix]
-
-== Changelog
-
-=== [v2.0.2] - 2024-12-15
-
-==== Release Notes
-
-* Allow JSON primitive types to be specified for user parameters for action objects.
-+
-[source,json]
-----
-{
-  "user_params": {
-    "url": "http://localhost",
-    "debug": false,
-    "http_port": 7070
-  }
-}
-----
-
-* Use method `getProcessCpuTime` from class `OperatingSystemMXBean` to accurately determine the CPU utilization of Tulip.
-
-* Display the current heap usage to the Tulip console in  GB and not bytes.
-
-==== Release Information
-
-Tulip is now available on Maven Central at:
-
-* https://central.sonatype.com/namespace/io.github.wfouche.tulip
-+
-.Maven (xml)
-[source,xml]
-----
-<dependency>
-    <groupId>io.github.wfouche.tulip</groupId>
-    <artifactId>tulip-runtime</artifactId>
-    <version>2.0.2</version>
-</dependency>
-----
-+
-.Gradle (Groovy)
-[source,groovy]
-----
-implementation 'io.github.wfouche.tulip:tulip-runtime:2.0.2'
-----
-+
-.Gradle (kts)
-[source,kotlin]
-----
-implementation("io.github.wfouche.tulip:tulip-runtime:2.0.2")
-----
-
-
-* Documentation:
-
-** https://wfouche.github.io/Tulip/
-
-=== [v2.0.1] - 2024-12-08
-
-==== TulipApi
-
-The `runTulip` method can now be invoked without providing a `TulipUserFactory` object. In special cases this might still be needed, so the old way of invoking Tulip continues to be supported.
-
-.Simplified
-[source,java]
-----
-package org.example;
-
-import io.github.wfouche.tulip.api.*;
-
-public class App {
-    public static void main(String[] args) {
-        TulipApi.runTulip("./benchmark_config.json");
-    }
-}
-----
-
-.Original
-[source,java]
-----
-package org.example;
-
-import io.github.wfouche.tulip.api.*;
-
-public class App {
-    public static void main(String[] args) {
-        TulipApi.runTulip("./benchmark_config.json", new TulipUserFactory());
-    }
-}
-----
-
-==== TulipConsole
-
-Implemented method `put(List<String> list)` to print a list of Strings to the Tulip console (thread-safe output device). Method `put(String text)` continues to be supported.
-
-==== Release Information
-
-Maven Artifacts::
-
-https://central.sonatype.com/namespace/io.github.wfouche.tulip
-+
-.Maven (xml)
-[source,xml]
-----
-<dependency>
-    <groupId>io.github.wfouche.tulip</groupId>
-    <artifactId>tulip-runtime</artifactId>
-    <version>2.0.1</version>
-</dependency>
-----
-+
-.Gradle (Groovy)
-[source,groovy]
-----
-implementation 'io.github.wfouche.tulip:tulip-runtime:2.0.1'
-----
-+
-.Gradle (kts)
-[source,kotlin]
-----
-implementation("io.github.wfouche.tulip:tulip-runtime:2.0.1")
-----
-
-Documentation::
-
-https://wfouche.github.io/Tulip/
-
-=== [v2.0.0] - 2024-12-01
-
-Tulip has been in development for five years. This is the first public release of the Tulip load testing framework.
-
-==== Release Information
-
-Maven Artifacts::
-
-https://central.sonatype.com/namespace/io.github.wfouche.tulip
-+
-.Maven (xml)
-[source,xml]
-----
-<dependency>
-    <groupId>io.github.wfouche.tulip</groupId>
-    <artifactId>tulip-runtime</artifactId>
-    <version>2.0.0</version>
-</dependency>
-----
-+
-.Gradle (Groovy)
-[source,groovy]
-----
-implementation 'io.github.wfouche.tulip:tulip-runtime:2.0.0'
-----
-+
-.Gradle (kts)
-[source,kotlin]
-----
-implementation("io.github.wfouche.tulip:tulip-runtime:2.0.0")
-----
-
-Documentation::
-
-https://wfouche.github.io/Tulip/
 
 [appendix]
 == License

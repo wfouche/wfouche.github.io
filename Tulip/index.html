@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 2.0.23">
-<meta name="author" content="v2.1.1">
+<meta name="author" content="v2.1.3">
 <title>Tulip: Load Testing, Stress Testing and Performance Regression Testing</title>
 <style>
 @import url(//cdnjs.cloudflare.com/ajax/libs/font-awesome/3.2.0/css/font-awesome.css);
@@ -758,13 +758,13 @@ span.icon > [class^="icon-"], span.icon > [class*=" icon-"] { cursor: default; }
 <div id="header">
 <h1>Tulip: Load Testing, Stress Testing and Performance Regression Testing</h1>
 <div class="details">
-<span id="author" class="author">v2.1.1</span><br>
+<span id="author" class="author">v2.1.3</span><br>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
 <li><a href="#_introduction">1. Introduction</a></li>
-<li><a href="#_source_code">2. Source Code</a></li>
+<li><a href="#_quick_start_guide">2. Quick Start Guide</a></li>
 <li><a href="#_sample_benchmark">3. Sample Benchmark</a>
 <ul class="sectlevel2">
 <li><a href="#_benchmark_app">3.1. Benchmark App</a></li>
@@ -772,13 +772,11 @@ span.icon > [class^="icon-"], span.icon > [class*=" icon-"] { cursor: default; }
 <li><a href="#_run_script">3.3. Run Script</a></li>
 <li><a href="#_benchmark_configuration">3.4. Benchmark Configuration</a></li>
 <li><a href="#_console_output">3.5. Console Output</a></li>
-<li><a href="#_performance_report_text">3.6. Performance Report - Text</a></li>
-<li><a href="#_performance_report_html">3.7. Performance Report - HTML</a></li>
+<li><a href="#_performance_report_console">3.6. Performance Report - Console</a></li>
+<li><a href="#_performance_report_browser">3.7. Performance Report - Browser</a></li>
 </ul>
 </li>
 <li><a href="#_basic_principles">4. Basic Principles</a></li>
-<li><a href="#_quick_start_guide">5. Quick Start Guide</a></li>
-<li><a href="#_tulip_releases">6. Tulip Releases</a></li>
 <li><a href="#_license">Appendix A: License</a></li>
 </ul>
 </div>
@@ -786,55 +784,182 @@ span.icon > [class^="icon-"], span.icon > [class*=" icon-"] { cursor: default; }
 <div id="content">
 <div id="preamble">
 <div class="sectionbody">
-<div class="imageblock">
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="imageblock">
 <div class="content">
 <img src="tulip_logo.svg" alt="tulip logo" width="128">
 </div>
 </div>
+<div class="paragraph">
+<p><a href="https://github.com/wfouche/Tulip" class="bare">https://github.com/wfouche/Tulip</a></p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 <div class="sect1">
 <h2 id="_introduction">1. Introduction</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p><a href="https://github.com/wfouche/Tulip">Tulip</a> is an advanced open-source software tool designed for load testing, stress testing and performance regression testing. It is a robust solution for evaluating the performance and stability of web applications under varying conditions, ensuring they can handle high traffic and stress levels efficiently. Similar to well-known tools like JMeter, Gatling and Locust, Tulip provides powerful capabilities to simulate real-world scenarios and generate comprehensive reports, helping developers identify and resolve potential bottlenecks.</p>
+<p><a href="https://github.com/wfouche/Tulip">Tulip</a> is an advanced open-source software tool, writtem in Kotlin, designed for load testing, stress testing and performance regression testing. It is a robust solution for evaluating the performance and stability of web applications under varying conditions, ensuring they can handle high traffic and stress levels efficiently. Similar to well-known tools like JMeter, Gatling and Locust, Tulip provides powerful capabilities to simulate real-world scenarios and generate comprehensive reports, helping developers identify and resolve potential bottlenecks.</p>
+</div>
+<div class="paragraph">
+<p>Tulip is available as a runtime JAR on Maven Central. A benchmark program is consists of three parts:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>JSONC benchmark configuration file specifying benchmark scenarios</p>
+</li>
+<li>
+<p>User class that implement actions to be benchmarked</p>
+</li>
+<li>
+<p>App class that activates the Tulip runtime</p>
+</li>
+</ol>
+</div>
+<div class="imageblock kroki">
+<div class="content">
+<img src="https://kroki.io/plantuml/svg/eNqNkE0KwjAUhPc5RcB1e4AEpCK9gQVBRNL0mabmj5cXRE9vtRsXCl0OfDPwTZNJIRXvWE7OEuOcV6fRDgOEc7V9x41BgPAA5-Jd9BD06BXeLjqGqzX1lGPQcilzZZQNvyZ6sAbELqVaO5XzSr7LgCsL6lkQBBVnU4UlkPVQTwolgzDwxUy0x3bfHVrJ_hjFQqnQx2hmtBqAelfgi0BIEakeyTvJmnl6_u0FAC1s8g==" alt="diag00">
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;!-- https://mvnrepository.com/artifact/io.github.wfouche.tulip/tulip-runtime --&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;io.github.wfouche.tulip&lt;/groupId&gt;
+    &lt;artifactId&gt;tulip-runtime&lt;/artifactId&gt;
+    &lt;version&gt;2.1.3&lt;/version&gt;
+&lt;/dependency&gt;</code></pre>
+</div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_source_code">2. Source Code</h2>
+<h2 id="_quick_start_guide">2. Quick Start Guide</h2>
 <div class="sectionbody">
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="quoteblock">
+<blockquote>
+Seeing is believing and believing is knowing and knowing beats unknowing and the unknown.
+</blockquote>
+<div class="attribution">
+&#8212; Philip Roth
+</div>
+</div></div></td>
+</tr>
+</tbody>
+</table>
 <div class="paragraph">
-<p>Tulip development is hosted on Github at:</p>
+<p>The best and quickest way to get started with Tulip is to try out the sample benchmark program.</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Prerequisites</dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p>OpenJDK 21 or later version is installed</p>
+</li>
+<li>
+<p><a href="https://www.jbang.dev/">JBang</a> 0.121.0 or later version is installed</p>
+</li>
+<li>
+<p>[optional] Scala-cli is installed to run the Scala sample benchmark program</p>
+</li>
+<li>
+<p>Tulip has been tested and works on Linux, Windows or MacOS</p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>Run the following command to create the Kotlin version of the sample benchmark program:</p>
+</div>
+<div class="paragraph">
+<p><code>jbang io.github.wfouche.tulip:tulip-runtime:2.1.3 Kotlin</code></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>The sample benchmark program is implemented in four languages:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><a href="https://github.com/wfouche/Tulip" class="bare">https://github.com/wfouche/Tulip</a></p>
+<p>Java</p>
+</li>
+<li>
+<p>Groovy</p>
+</li>
+<li>
+<p>Kotlin</p>
+</li>
+<li>
+<p>Scala</p>
 </li>
 </ul>
+</div>
+<div class="paragraph">
+<p>For example, to generate the Java version of the benchmark program simply run command:</p>
+</div>
+<div class="paragraph">
+<p><code>jbang io.github.wfouche.tulip:tulip-runtime:2.1.3 Java</code></p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Thereafter start script <code>./run_bench.sh</code> (Linux or MacOS) or <code>.\run_bench.cmd</code> (Windows).</p>
+</div>
+<div class="paragraph">
+<p>While the benchmark program is running the <code>benchmark_output.json</code> file is incrementally updated with benchmark results, and once benchmark is finished a benchmark report is generated from the benchmark out.</p>
+</div>
+<div class="paragraph">
+<p>The benchmark report file is called <code>benchmark_report.html</code></p>
 </div>
 </div>
 </div>
 <div class="sect1">
 <h2 id="_sample_benchmark">3. Sample Benchmark</h2>
 <div class="sectionbody">
-<div class="imageblock stretch kroki-format-svg kroki">
-<div class="content">
-<img src="https://kroki.io/plantuml/svg/eNqNkFELgjAcxN_9FAOf9QNMCEVWKerG3CCIHmb7Y4O1QidRnz7DXoKgHg_ud9xdOno1-Olsg_FqjQ8QQtH-ZLQGd4hWLxn2A4C7g7WXG85psy42cdnSJlkIpHpl3DeuA9MDzhj70ylbwuMy4z_t6jENgIWsChZx2YiiJgsHTqNlBiY7kktBkuCjPpWCSfGuHx6VBt_ZCTAnjHIRb0VdJUE6x8yHPAHhOla0" alt="diag00">
-</div>
-</div>
 <div class="sect2">
 <h3 id="_benchmark_app">3.1. Benchmark App</h3>
 <div class="listingblock">
-<div class="title">App.kt (<a href="https://www.jbang.dev/" class="bare">https://www.jbang.dev/</a>)</div>
+<div class="title">App.kt</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-kotlin hljs" data-lang="kotlin">///usr/bin/env jbang "$0" "$@" ; exit $?
-//DEPS io.github.wfouche.tulip:tulip-runtime:2.1.1
+//DEPS io.github.wfouche.tulip:tulip-runtime:2.1.3
+//DEPS org.springframework.boot:spring-boot-starter-web:3.4.1
+//DEPS org.slf4j:slf4j-api:2.0.16
+//DEPS ch.qos.logback:logback-core:1.5.16
+//DEPS ch.qos.logback:logback-classic:1.5.16
+//SOURCES HttpUser.kt
 //JAVA 21
-//SOURCES DemoUser.kt
+//KOTLIN 2.0.21
 
-import io.github.wfouche.tulip.api.*
+import io.github.wfouche.tulip.api.TulipApi
 
 fun main(args: Array&lt;String&gt;) {
     TulipApi.runTulip("benchmark_config.jsonc")
@@ -845,32 +970,95 @@ fun main(args: Array&lt;String&gt;) {
 <div class="sect2">
 <h3 id="_benchmark_user_class">3.2. Benchmark User Class</h3>
 <div class="listingblock">
-<div class="title">DemoUser.kt</div>
+<div class="title">HttpUser.kt</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-kotlin hljs" data-lang="kotlin">import io.github.wfouche.tulip.api.TulipUser
+<pre class="highlightjs highlight"><code class="language-kotlin hljs" data-lang="kotlin">import io.github.wfouche.tulip.api.*
+import java.util.concurrent.ThreadLocalRandom
+import org.springframework.web.client.RestClient
+import org.springframework.web.client.RestClientException
+import org.springframework.http.client.SimpleClientHttpRequestFactory
+import org.slf4j.Logger
+import org.slf4j.LoggerFactory
 
-class DemoUser(userId: Int, threadId: Int) : TulipUser(userId, threadId) {
+class HttpUser(userId: Int, threadId: Int) : TulipUser(userId, threadId) {
 
+    // Action 0
     override fun onStart(): Boolean {
+        // Initialize the shared RestClient object only once
+        if (userId == 0) {
+            logger.info("Kotlin")
+            logger.info("Initializing static data")
+            val connectTimeout = getUserParamValue("connectTimeoutMillis").toInt()
+            val readTimeout = getUserParamValue("readTimeoutMillis").toInt()
+            val factory = SimpleClientHttpRequestFactory().apply {
+                setConnectTimeout(connectTimeout)
+                setReadTimeout(readTimeout)
+            }
+            restClient = RestClient.builder()
+                .requestFactory(factory)
+                .baseUrl(getUserParamValue("baseURI"))
+                .build()
+            debug = getUserParamValue("debug").toBoolean()
+            logger.info("debug = " + debug)
+        }
         return true
     }
 
+    // Action 1: GET /posts/{id}
     override fun action1(): Boolean {
-        Thread.sleep(10)
-        return true
+        val id: Int = if (debug) 1 else ThreadLocalRandom.current().nextInt(100)+1
+        return try {
+            val rsp: String? = restClient.get()
+                .uri("/posts/${id}")
+                .retrieve()
+                .body(String::class.java)
+            //Postcondition
+            (rsp != null &amp;&amp; rsp.length &gt; 2)
+        } catch (e: RestClientException) {
+            false
+        }
     }
 
+    // Action 2: GET /comments/{id}
     override fun action2(): Boolean {
-        Thread.sleep(20)
-        return true
+        val id: Int = if (debug) 1 else ThreadLocalRandom.current().nextInt(500)+1
+        return try {
+            val rsp: String? = restClient.get()
+                .uri("/comments/${id}")
+                .retrieve()
+                .body(String::class.java)
+            //Postcondition
+            (rsp != null &amp;&amp; rsp.length &gt; 2)
+        } catch (e: RestClientException) {
+            false
+        }
     }
 
+    // Action 3: GET /todos/{id}
     override fun action3(): Boolean {
-        return true
+        val id: Int = if (debug) 1 else ThreadLocalRandom.current().nextInt(200)+1
+        return try {
+            val rsp: String? = restClient.get()
+                .uri("/todos/${id}")
+                .retrieve()
+                .body(String::class.java)
+            //Postcondition
+            (rsp != null &amp;&amp; rsp.length &gt; 2)
+        } catch (e: RestClientException) {
+            false
+        }
     }
 
+    // Action 99
     override fun onStop(): Boolean {
         return true
+    }
+
+    // RestClient object
+    companion object {
+        private lateinit var restClient: RestClient
+        private var debug: Boolean = false
+        private val logger = LoggerFactory.getLogger(HttpUser::class.java)
     }
 }</code></pre>
 </div>
@@ -882,11 +1070,30 @@ class DemoUser(userId: Int, threadId: Int) : TulipUser(userId, threadId) {
 <div class="title">run_bench.sh</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">#!/bin/bash
+# jbang io.github.wfouche.tulip:tulip-runtime:2.1.3 Kotlin
 rm -f benchmark_report.html
-export JBANG_JAVA_OPTIONS="-server -Xmx1024m -XX:+UseZGC -XX:+ZGenerational"
+export JBANG_JAVA_OPTIONS="-server -Xms2g -Xmx2g -XX:+UseZGC -XX:+ZGenerational"
 jbang run App.kt
 echo ""
-lynx -dump -width 200 benchmark_report.html</code></pre>
+#w3m -dump -cols 205 benchmark_report.html
+lynx -dump -width 205 benchmark_report.html
+#jbang run https://gist.github.com/wfouche/70738de122128bbc19ea888799151699 benchmark_config.adoc</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">run_bench.cmd</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">REM jbang io.github.wfouche.tulip:tulip-runtime:2.1.3 Kotlin
+if exist benchmark_report.html del benchmark_report.html
+set JBANG_JAVA_OPTIONS=-server -Xms2g -Xmx2g -XX:+UseZGC -XX:+ZGenerational
+call jbang run App.kt
+@echo off
+echo.
+REM call w3m.exe -dump -cols 205 benchmark_report.html
+lynx.exe -dump -width 205 benchmark_report.html
+start benchmark_report.html
+REM jbang run https://gist.github.com/wfouche/70738de122128bbc19ea888799151699 benchmark_config.adoc
+REM start benchmark_config.html</code></pre>
 </div>
 </div>
 </div>
@@ -896,100 +1103,110 @@ lynx -dump -width 200 benchmark_report.html</code></pre>
 <div class="title">benchmark_config.jsonc</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
+    // Actions
     "actions": {
-        "description": "Demo Benchmark",
+        "description": "Spring RestClient Benchmark [Kotlin]",
         "output_filename": "benchmark_output.json",
         "report_filename": "benchmark_report.html",
-        "user_class": "DemoUser",
+        "user_class": "HttpUser",
         "user_params": {
-            "url": "http://localhost:7070"
+            "baseURI": "https://jsonplaceholder.typicode.com",
+            "connectTimeoutMillis": 500,
+            "readTimeoutMillis": 2000,
+            "debug": false
         },
         "user_actions": {
-            "0": "onStart",
-            "1": "DELAY-10ms",
-            "2": "DELAY-20ms",
-            "3": "NOP",
-            "99": "onStop"
+            "0": "onStart",  // Init
+            "1": "GET:posts",
+            "2": "GET:comments",
+            "3": "GET:todos",
+            "99": "onStop"   // Shutdown
         }
     },
-    "contexts": {
-        "Context-1": {
-            "enabled": true,
-            "num_users": 4,
-            "num_threads": 2
-        },
-        "Context-2": {
-            "enabled": false,
-            "num_users": 4,
-            "num_threads": 4
+    // Workflows using Markov chains
+    "workflows": {
+        "api-user": {
+            "-": {
+                "1": 0.40,
+                "3": 0.60
+            },
+            "1": {
+                "2": 1.0
+            },
+            "2": {
+                "-": 1.0
+            },
+            "3": {
+                "-": 1.0
+            }
         }
     },
+    // Benchmarks
     "benchmarks": {
-        "Startup": {
-            "actions": [
-                {
-                    "id": 0
-                }
-            ]
+        "onStart": {
+            "scenario_actions": [ {"id": 0} ]
         },
-        "Maximum Rate": {
+         "REST1": {
+            "enabled": true,
+            "aps_rate": 10.0,
+            "scenario_actions": [
+                {
+                    "id": 1
+                }
+            ],
             "time": {
-                "pre_warmup_duration": 5,
+                "pre_warmup_duration": 30,
                 "warmup_duration": 10,
                 "benchmark_duration": 30,
                 "benchmark_repeat_count": 3
-            },
-            "throughput_rate": 0.0,
-            "actions": [
+            }
+        },
+        "REST2": {
+            "enabled": true,
+            "aps_rate": 10.0,
+            "scenario_actions": [
                 {
-                    "id": 1,
-                    "weight": 90
+                    "id": 1, "weight": 10
                 },
                 {
-                    "id": 2,
-                    "weight": 10
-                }
-            ]
-        },
-        "Fixed Rate": {
-            "time": {
-                "pre_warmup_duration": 5,
-                "warmup_duration": 10,
-                "benchmark_duration": 30,
-                "benchmark_repeat_count": 3
-            },
-            "throughput_rate": 100.0,
-            "actions": [
-                {
-                    "id": 1,
-                    "weight": 90
+                    "id": 2, "weight": 40
                 },
                 {
-                    "id": 2,
-                    "weight": 10
+                    "id": 3, "weight": 50
                 }
-            ]
-        },
-        "NOP": {
+            ],
             "time": {
-                "pre_warmup_duration": 5,
+                "pre_warmup_duration": 30,
                 "warmup_duration": 10,
                 "benchmark_duration": 30,
                 "benchmark_repeat_count": 3
-            },
-            "throughput_rate": 0.0,
-            "actions": [
-                {
-                    "id": 3
-                }
-            ]
+            }
         },
-        "Shutdown": {
-            "actions": [
+        "REST3": {
+            "enabled": true,
+            "aps_rate": 10.0,
+            "scenario_workflow": "api-user",
+            "time": {
+                "pre_warmup_duration": 30,
+                "warmup_duration": 10,
+                "benchmark_duration": 30,
+                "benchmark_repeat_count": 3
+            }
+        },
+        "onStop": {
+            "scenario_actions": [
                 {
                     "id": 99
                 }
             ]
+        }
+    },
+    // Contexts
+    "contexts": {
+        "Context-1": {
+            "enabled": true,
+            "num_users": 128,
+            "num_threads": 2
         }
     }
 }</code></pre>
@@ -999,7 +1216,7 @@ lynx -dump -width 200 benchmark_report.html</code></pre>
 <div class="sect2">
 <h3 id="_console_output">3.5. Console Output</h3>
 <div class="paragraph">
-<p>This is the information that Tulip writes to the console when starting up after method TulipApi.runTulip() was called.</p>
+<p>This is the information that Tulip writes to the console when initializing after method TulipApi.runTulip() was called.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -1008,7 +1225,7 @@ lynx -dump -width 200 benchmark_report.html</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_performance_report_text">3.6. Performance Report - Text</h3>
+<h3 id="_performance_report_console">3.6. Performance Report - Console</h3>
 <div class="imageblock">
 <div class="content">
 <img src="images/image-tulip-report-1.png" alt="image tulip report 1">
@@ -1016,7 +1233,7 @@ lynx -dump -width 200 benchmark_report.html</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_performance_report_html">3.7. Performance Report - HTML</h3>
+<h3 id="_performance_report_browser">3.7. Performance Report - Browser</h3>
 <div class="imageblock">
 <div class="content">
 <img src="images/image-tulip-report-2.png" alt="image tulip report 2">
@@ -1030,83 +1247,6 @@ lynx -dump -width 200 benchmark_report.html</code></pre>
 <div class="sectionbody">
 <div class="paragraph">
 <p>&lt;Under construction.&gt;</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_quick_start_guide">5. Quick Start Guide</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>&lt;Under construction.&gt;</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_tulip_releases">6. Tulip Releases</h2>
-<div class="sectionbody">
-<div class="ulist">
-<ul>
-<li>
-<p>[v2.1.1] - 2025-01-09</p>
-<div class="ulist">
-<ul>
-<li>
-<p><a href="https://github.com/wfouche/Tulip/releases?q=v2.1.1&amp;expanded=true" class="bare">https://github.com/wfouche/Tulip/releases?q=v2.1.1&amp;expanded=true</a></p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>[v2.1.0] - 2025-01-06</p>
-<div class="ulist">
-<ul>
-<li>
-<p><a href="https://github.com/wfouche/Tulip/releases?q=v2.1.0&amp;expanded=true" class="bare">https://github.com/wfouche/Tulip/releases?q=v2.1.0&amp;expanded=true</a></p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>[v2.0.3] - 2024-12-19</p>
-<div class="ulist">
-<ul>
-<li>
-<p><a href="https://github.com/wfouche/Tulip/releases?q=v2.0.3&amp;expanded=true" class="bare">https://github.com/wfouche/Tulip/releases?q=v2.0.3&amp;expanded=true</a></p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>[v2.0.2] - 2024-12-15</p>
-<div class="ulist">
-<ul>
-<li>
-<p><a href="https://github.com/wfouche/Tulip/releases?q=v2.0.2&amp;expanded=true" class="bare">https://github.com/wfouche/Tulip/releases?q=v2.0.2&amp;expanded=true</a></p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>[v2.0.1] - 2024/12/08</p>
-<div class="ulist">
-<ul>
-<li>
-<p><a href="https://github.com/wfouche/Tulip/releases?q=v2.0.1&amp;expanded=true" class="bare">https://github.com/wfouche/Tulip/releases?q=v2.0.1&amp;expanded=true</a></p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>[v2.0.0] - 2024/12/01</p>
-<div class="ulist">
-<ul>
-<li>
-<p><a href="https://github.com/wfouche/Tulip/releases?q=v2.0.0&amp;expanded=true" class="bare">https://github.com/wfouche/Tulip/releases?q=v2.0.0&amp;expanded=true</a></p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
 </div>
 </div>
 </div>
@@ -1135,7 +1275,7 @@ limitations under the License.</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2025-01-09 11:59:11 +0200
+Last updated 2025-01-19 23:07:14 +0200
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/highlight.min.js"></script>

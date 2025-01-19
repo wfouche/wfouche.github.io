@@ -112,21 +112,7 @@ The benchmark report file is called `benchmark_report.html`
 .App.kt
 [source,kotlin,linenums]
 ----
-///usr/bin/env jbang "$0" "$@" ; exit $?
-//DEPS io.github.wfouche.tulip:tulip-runtime:2.1.3
-//DEPS org.springframework.boot:spring-boot-starter-web:3.4.1
-//DEPS org.slf4j:slf4j-api:2.0.16
-//DEPS ch.qos.logback:logback-core:1.5.16
-//DEPS ch.qos.logback:logback-classic:1.5.16
-//SOURCES HttpUser.kt
-//JAVA 21
-//KOTLIN 2.0.21
-
-import io.github.wfouche.tulip.api.TulipApi
-
-fun main(args: Array<String>) {
-    TulipApi.runTulip("benchmark_config.jsonc")
-}
+include::sample/App.kt[]
 ----
 
 === Benchmark User Class
@@ -134,95 +120,7 @@ fun main(args: Array<String>) {
 .HttpUser.kt
 [source,kotlin,linenums]
 ----
-import io.github.wfouche.tulip.api.*
-import java.util.concurrent.ThreadLocalRandom
-import org.springframework.web.client.RestClient
-import org.springframework.web.client.RestClientException
-import org.springframework.http.client.SimpleClientHttpRequestFactory
-import org.slf4j.Logger
-import org.slf4j.LoggerFactory
-
-class HttpUser(userId: Int, threadId: Int) : TulipUser(userId, threadId) {
-
-    // Action 0
-    override fun onStart(): Boolean {
-        // Initialize the shared RestClient object only once
-        if (userId == 0) {
-            logger.info("Kotlin")
-            logger.info("Initializing static data")
-            val connectTimeout = getUserParamValue("connectTimeoutMillis").toInt()
-            val readTimeout = getUserParamValue("readTimeoutMillis").toInt()
-            val factory = SimpleClientHttpRequestFactory().apply {
-                setConnectTimeout(connectTimeout)
-                setReadTimeout(readTimeout)
-            }
-            restClient = RestClient.builder()
-                .requestFactory(factory)
-                .baseUrl(getUserParamValue("baseURI"))
-                .build()
-            debug = getUserParamValue("debug").toBoolean()
-            logger.info("debug = " + debug)
-        }
-        return true
-    }
-
-    // Action 1: GET /posts/{id}
-    override fun action1(): Boolean {
-        val id: Int = if (debug) 1 else ThreadLocalRandom.current().nextInt(100)+1
-        return try {
-            val rsp: String? = restClient.get()
-                .uri("/posts/${id}")
-                .retrieve()
-                .body(String::class.java)
-            //Postcondition
-            (rsp != null && rsp.length > 2)
-        } catch (e: RestClientException) {
-            false
-        }
-    }
-
-    // Action 2: GET /comments/{id}
-    override fun action2(): Boolean {
-        val id: Int = if (debug) 1 else ThreadLocalRandom.current().nextInt(500)+1
-        return try {
-            val rsp: String? = restClient.get()
-                .uri("/comments/${id}")
-                .retrieve()
-                .body(String::class.java)
-            //Postcondition
-            (rsp != null && rsp.length > 2)
-        } catch (e: RestClientException) {
-            false
-        }
-    }
-
-    // Action 3: GET /todos/{id}
-    override fun action3(): Boolean {
-        val id: Int = if (debug) 1 else ThreadLocalRandom.current().nextInt(200)+1
-        return try {
-            val rsp: String? = restClient.get()
-                .uri("/todos/${id}")
-                .retrieve()
-                .body(String::class.java)
-            //Postcondition
-            (rsp != null && rsp.length > 2)
-        } catch (e: RestClientException) {
-            false
-        }
-    }
-
-    // Action 99
-    override fun onStop(): Boolean {
-        return true
-    }
-
-    // RestClient object
-    companion object {
-        private lateinit var restClient: RestClient
-        private var debug: Boolean = false
-        private val logger = LoggerFactory.getLogger(HttpUser::class.java)
-    }
-}
+include::sample/HttpUser.kt[]
 ----
 
 === Run Script
@@ -230,31 +128,13 @@ class HttpUser(userId: Int, threadId: Int) : TulipUser(userId, threadId) {
 .run_bench.sh
 [source,bash,linenums]
 ----
-#!/bin/bash
-# jbang io.github.wfouche.tulip:tulip-runtime:2.1.3 Kotlin
-rm -f benchmark_report.html
-export JBANG_JAVA_OPTIONS="-server -Xms2g -Xmx2g -XX:+UseZGC -XX:+ZGenerational"
-jbang run App.kt
-echo ""
-#w3m -dump -cols 205 benchmark_report.html
-lynx -dump -width 205 benchmark_report.html
-#jbang run https://gist.github.com/wfouche/70738de122128bbc19ea888799151699 benchmark_config.adoc
+include::sample/run_bench.sh[]
 ----
 
 .run_bench.cmd
 [source,bash,linenums]
 ----
-REM jbang io.github.wfouche.tulip:tulip-runtime:2.1.3 Kotlin
-if exist benchmark_report.html del benchmark_report.html
-set JBANG_JAVA_OPTIONS=-server -Xms2g -Xmx2g -XX:+UseZGC -XX:+ZGenerational
-call jbang run App.kt
-@echo off
-echo.
-REM call w3m.exe -dump -cols 205 benchmark_report.html
-lynx.exe -dump -width 205 benchmark_report.html
-start benchmark_report.html
-REM jbang run https://gist.github.com/wfouche/70738de122128bbc19ea888799151699 benchmark_config.adoc
-REM start benchmark_config.html
+include::sample/run_bench.cmd[]
 ----
 
 === Benchmark Configuration
@@ -262,114 +142,7 @@ REM start benchmark_config.html
 .benchmark_config.jsonc
 [source,json,linenums]
 ----
-{
-    // Actions
-    "actions": {
-        "description": "Spring RestClient Benchmark [Kotlin]",
-        "output_filename": "benchmark_output.json",
-        "report_filename": "benchmark_report.html",
-        "user_class": "HttpUser",
-        "user_params": {
-            "baseURI": "https://jsonplaceholder.typicode.com",
-            "connectTimeoutMillis": 500,
-            "readTimeoutMillis": 2000,
-            "debug": false
-        },
-        "user_actions": {
-            "0": "onStart",  // Init
-            "1": "GET:posts",
-            "2": "GET:comments",
-            "3": "GET:todos",
-            "99": "onStop"   // Shutdown
-        }
-    },
-    // Workflows using Markov chains
-    "workflows": {
-        "api-user": {
-            "-": {
-                "1": 0.40,
-                "3": 0.60
-            },
-            "1": {
-                "2": 1.0
-            },
-            "2": {
-                "-": 1.0
-            },
-            "3": {
-                "-": 1.0
-            }
-        }
-    },
-    // Benchmarks
-    "benchmarks": {
-        "onStart": {
-            "scenario_actions": [ {"id": 0} ]
-        },
-         "REST1": {
-            "enabled": true,
-            "aps_rate": 10.0,
-            "scenario_actions": [
-                {
-                    "id": 1
-                }
-            ],
-            "time": {
-                "pre_warmup_duration": 30,
-                "warmup_duration": 10,
-                "benchmark_duration": 30,
-                "benchmark_repeat_count": 3
-            }
-        },
-        "REST2": {
-            "enabled": true,
-            "aps_rate": 10.0,
-            "scenario_actions": [
-                {
-                    "id": 1, "weight": 10
-                },
-                {
-                    "id": 2, "weight": 40
-                },
-                {
-                    "id": 3, "weight": 50
-                }
-            ],
-            "time": {
-                "pre_warmup_duration": 30,
-                "warmup_duration": 10,
-                "benchmark_duration": 30,
-                "benchmark_repeat_count": 3
-            }
-        },
-        "REST3": {
-            "enabled": true,
-            "aps_rate": 10.0,
-            "scenario_workflow": "api-user",
-            "time": {
-                "pre_warmup_duration": 30,
-                "warmup_duration": 10,
-                "benchmark_duration": 30,
-                "benchmark_repeat_count": 3
-            }
-        },
-        "onStop": {
-            "scenario_actions": [
-                {
-                    "id": 99
-                }
-            ]
-        }
-    },
-    // Contexts
-    "contexts": {
-        "Context-1": {
-            "enabled": true,
-            "num_users": 128,
-            "num_threads": 2
-        }
-    }
-}
+include::sample/benchmark_config.jsonc[]
 ----
 
 === Console Output

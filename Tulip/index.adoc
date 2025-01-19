@@ -93,7 +93,7 @@ For example, to generate the Java version of the benchmark program simply run co
 
 Thereafter start script `./run_bench.sh` (Linux or MacOS) or `.\run_bench.cmd` (Windows).
 
-While the benchmark program is running the `benchmark_output.json` file is incrementally updated with benchmark results, and once benchmark is finished a benchmark report is generated from the benchmark out.
+While the benchmark program is running the `benchmark_output.json` file is incrementally updated with benchmark results, and once benchmark is finished a benchmark report is generated from the benchmark output.
 
 The benchmark report file is called `benchmark_report.html`
 

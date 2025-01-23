@@ -1,22 +1,101 @@
 = Tulip: Load Testing, Stress Testing and Performance Regression Testing
-v2.1.1
+v2.1.3
 :toc: left
 :sectnums:
 :source-highlighter: highlightjs
 :stylesdir: css
 :stylesheet: adoc-foundation-potion.css
 
+[cols="1a"]
+|===
+|
 image::tulip_logo.svg[width=128]
+https://github.com/wfouche/Tulip
+|===
 
 == Introduction
 
-https://github.com/wfouche/Tulip[Tulip] is an advanced open-source software tool designed for load testing, stress testing and performance regression testing. It is a robust solution for evaluating the performance and stability of web applications under varying conditions, ensuring they can handle high traffic and stress levels efficiently. Similar to well-known tools like JMeter, Gatling and Locust, Tulip provides powerful capabilities to simulate real-world scenarios and generate comprehensive reports, helping developers identify and resolve potential bottlenecks.
+https://github.com/wfouche/Tulip[Tulip] is an advanced open-source software tool, written in Kotlin for the JVM, designed for load testing, stress testing and performance regression testing. It is a robust solution for evaluating the performance and stability of web applications under varying conditions, ensuring they can handle high traffic and stress levels efficiently. Similar to well-known tools like JMeter, Gatling and Locust, Tulip provides powerful capabilities to simulate real-world scenarios and generate comprehensive reports, helping developers identify and resolve potential bottlenecks.
 
-== Source Code
+Tulip is available as a runtime JAR on Maven Central. A benchmark program is consists of three parts:
 
-Tulip development is hosted on Github at:
+. JSONC benchmark configuration file specifying benchmark scenarios
+. User class that implement actions to be benchmarked
+. App class that activates the Tulip runtime
 
-* https://github.com/wfouche/Tulip
+
+[plantuml,diag00,svg]
+----
+@startuml
+split
+   -[hidden]->
+   #greenyellow:benchmark_config.jsonc;
+split again
+   -[hidden]->
+   #beige:App.class;
+split again
+   -[hidden]->
+   #beige:User.class;
+split again
+   -[hidden]->
+   #azure:tulip-runtime.jar;
+end split
+:EXECUTE;
+#greenyellow:benchmark_output.json;
+#cadetblue:benchmark_report.html;
+@enduml
+----
+
+[source,xml]
+----
+<!-- https://mvnrepository.com/artifact/io.github.wfouche.tulip/tulip-runtime -->
+<dependency>
+    <groupId>io.github.wfouche.tulip</groupId>
+    <artifactId>tulip-runtime</artifactId>
+    <version>2.1.3</version>
+</dependency>
+----
+
+== Quick Start Guide
+
+[cols="1a"]
+|===
+|
+"Seeing is believing and believing is knowing and knowing beats unknowing and the unknown."
+-- Philip Roth
+|===
+
+The best and quickest way to get started with Tulip is to try out the sample benchmark program.
+
+Prerequisites::
+* OpenJDK 21 or later version is installed
+* https://www.jbang.dev/[JBang] 0.121.0 or later version is installed
+* [optional] Scala-cli is installed to run the Scala sample benchmark program
+* Tulip has been tested and works on Linux, Windows or MacOS
+
+Run the following command to create the Kotlin version of the sample benchmark program:
+
+`jbang io.github.wfouche.tulip:tulip-runtime:2.1.3 Kotlin`
+
+[NOTE]
+====
+The sample benchmark program is implemented in four languages:
+
+* Java
+* Groovy
+* Kotlin
+* Scala
+
+For example, to generate the Java version of the benchmark program simply run command:
+
+`jbang io.github.wfouche.tulip:tulip-runtime:2.1.3 Java`
+====
+
+Thereafter start script `./run_bench.sh` (Linux or MacOS) or `.\run_bench.cmd` (Windows).
+
+While the benchmark program is running the `benchmark_output.json` file is incrementally updated with benchmark results, and once benchmark is finished a benchmark report is generated from the benchmark output.
+
+The benchmark report file is called `benchmark_report.html`
 
 //
 // https://www.freepik.com/free-vector/tulip-flower-logo-gradient-colorful_41061958.htm
@@ -28,77 +107,20 @@ Tulip development is hosted on Github at:
 
 == Sample Benchmark
 
-[.stretch]
-[plantuml,diag00,svg]
-----
-@startuml
-split
-   -[hidden]->
-   #greenyellow:CONFIG.JSON;
-split again
-   -[hidden]->
-   #beige:APP;
-split again
-   -[hidden]->
-   #beige:USER.JAR;
-split again
-   -[hidden]->
-   #azure:TULIP-RUNTIME.JAR;
-end split
-:EXECUTE;
-#greenyellow:OUTPUT.JSON;
-#cadetblue:REPORT.HTML;
-@enduml
-----
-
 === Benchmark App
 
-.App.kt (https://www.jbang.dev/)
+.App.kt
 [source,kotlin,linenums]
 ----
-///usr/bin/env jbang "$0" "$@" ; exit $?
-//DEPS io.github.wfouche.tulip:tulip-runtime:2.1.1
-//JAVA 21
-//SOURCES DemoUser.kt
-
-import io.github.wfouche.tulip.api.*
-
-fun main(args: Array<String>) {
-    TulipApi.runTulip("benchmark_config.jsonc")
-}
+include::sample/App.kt[]
 ----
 
 === Benchmark User Class
 
-.DemoUser.kt
+.HttpUser.kt
 [source,kotlin,linenums]
 ----
-import io.github.wfouche.tulip.api.TulipUser
-
-class DemoUser(userId: Int, threadId: Int) : TulipUser(userId, threadId) {
-
-    override fun onStart(): Boolean {
-        return true
-    }
-
-    override fun action1(): Boolean {
-        Thread.sleep(10)
-        return true
-    }
-
-    override fun action2(): Boolean {
-        Thread.sleep(20)
-        return true
-    }
-
-    override fun action3(): Boolean {
-        return true
-    }
-
-    override fun onStop(): Boolean {
-        return true
-    }
-}
+include::sample/HttpUser.kt[]
 ----
 
 === Run Script
@@ -106,12 +128,13 @@ class DemoUser(userId: Int, threadId: Int) : TulipUser(userId, threadId) {
 .run_bench.sh
 [source,bash,linenums]
 ----
-#!/bin/bash
-rm -f benchmark_report.html
-export JBANG_JAVA_OPTIONS="-server -Xmx1024m -XX:+UseZGC -XX:+ZGenerational"
-jbang run App.kt
-echo ""
-lynx -dump -width 200 benchmark_report.html
+include::sample/run_bench.sh[]
+----
+
+.run_bench.cmd
+[source,bash,linenums]
+----
+include::sample/run_bench.cmd[]
 ----
 
 === Benchmark Configuration
@@ -119,109 +142,12 @@ lynx -dump -width 200 benchmark_report.html
 .benchmark_config.jsonc
 [source,json,linenums]
 ----
-{
-    "actions": {
-        "description": "Demo Benchmark",
-        "output_filename": "benchmark_output.json",
-        "report_filename": "benchmark_report.html",
-        "user_class": "DemoUser",
-        "user_params": {
-            "url": "http://localhost:7070"
-        },
-        "user_actions": {
-            "0": "onStart",
-            "1": "DELAY-10ms",
-            "2": "DELAY-20ms",
-            "3": "NOP",
-            "99": "onStop"
-        }
-    },
-    "contexts": {
-        "Context-1": {
-            "enabled": true,
-            "num_users": 4,
-            "num_threads": 2
-        },
-        "Context-2": {
-            "enabled": false,
-            "num_users": 4,
-            "num_threads": 4
-        }
-    },
-    "benchmarks": {
-        "Startup": {
-            "actions": [
-                {
-                    "id": 0
-                }
-            ]
-        },
-        "Maximum Rate": {
-            "time": {
-                "pre_warmup_duration": 5,
-                "warmup_duration": 10,
-                "benchmark_duration": 30,
-                "benchmark_repeat_count": 3
-            },
-            "throughput_rate": 0.0,
-            "actions": [
-                {
-                    "id": 1,
-                    "weight": 90
-                },
-                {
-                    "id": 2,
-                    "weight": 10
-                }
-            ]
-        },
-        "Fixed Rate": {
-            "time": {
-                "pre_warmup_duration": 5,
-                "warmup_duration": 10,
-                "benchmark_duration": 30,
-                "benchmark_repeat_count": 3
-            },
-            "throughput_rate": 100.0,
-            "actions": [
-                {
-                    "id": 1,
-                    "weight": 90
-                },
-                {
-                    "id": 2,
-                    "weight": 10
-                }
-            ]
-        },
-        "NOP": {
-            "time": {
-                "pre_warmup_duration": 5,
-                "warmup_duration": 10,
-                "benchmark_duration": 30,
-                "benchmark_repeat_count": 3
-            },
-            "throughput_rate": 0.0,
-            "actions": [
-                {
-                    "id": 3
-                }
-            ]
-        },
-        "Shutdown": {
-            "actions": [
-                {
-                    "id": 99
-                }
-            ]
-        }
-    }
-}
+include::sample/benchmark_config.jsonc[]
 ----
 
 === Console Output
 
-This is the information that Tulip writes to the console when starting up after method TulipApi.runTulip() was called.
+This is the information that Tulip writes to the console when initializing after method TulipApi.runTulip() was called.
 
 image::images/image-tulip-console-1.png[]
 
@@ -236,28 +162,6 @@ image::images/image-tulip-report-2.png[]
 == Basic Principles
 
 <Under construction.>
-
-== Quick Start Guide
-
-<Under construction.>
-
-== Tulip Releases
-
-* [v2.1.1] - 2025-01-09
-
-** https://github.com/wfouche/Tulip/releases?q=v2.1.1&expanded=true
-
-* [v2.0.2] - 2024-12-15
-
-** https://github.com/wfouche/Tulip/releases?q=v2.0.2&expanded=true
-
-* [v2.0.1] - 2024/12/08
-
-** https://github.com/wfouche/Tulip/releases?q=v2.0.1&expanded=true
-
-* [v2.0.0] - 2024/12/01
-
-** https://github.com/wfouche/Tulip/releases?q=v2.0.0&expanded=true
 
 // Links
 

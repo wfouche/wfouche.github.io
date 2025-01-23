@@ -69,30 +69,38 @@
 </aside>
 <article class="doc">
 <h1 class="page">Introduction</h1>
-<div id="preamble">
-<div class="sectionbody">
 <div class="paragraph">
-<p>Load Testing with Tulip to be explained in more detail:</p>
+<p><a href="https://github.com/wfouche/Tulip">Tulip</a> is an advanced open-source software tool, written in Kotlin for the JVM, designed for load testing, stress testing and performance regression testing. It is a robust solution for evaluating the performance and stability of web applications under varying conditions, ensuring they can handle high traffic and stress levels efficiently. Similar to well-known tools like JMeter, Gatling and Locust, Tulip provides powerful capabilities to simulate real-world scenarios and generate comprehensive reports, helping developers identify and resolve potential bottlenecks.</p>
 </div>
-<div class="ulist">
-<ul>
+<div class="paragraph">
+<p>Tulip is available as a runtime JAR on Maven Central. A benchmark program is consists of three parts:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
 <li>
-<p>Text to follow</p>
+<p>JSONC benchmark configuration file specifying benchmark scenarios</p>
 </li>
-</ul>
+<li>
+<p>User class that implement actions to be benchmarked</p>
+</li>
+<li>
+<p>App class that activates the Tulip runtime</p>
+</li>
+</ol>
+</div>
+<div class="imageblock kroki">
+<div class="content">
+<img src="_images/diag00-a324268c3ffd43f637ccebb13d67726c1f3eef82.svg" alt="diag00">
 </div>
 </div>
-</div>
-<div class="sect1">
-<h2 id="_what_is_tulip"><a class="anchor" href="#_what_is_tulip"></a>What is Tulip?</h2>
-<div class="sectionbody">
-
-</div>
-</div>
-<div class="sect1">
-<h2 id="_relationship_to_other_load_testing_solutions"><a class="anchor" href="#_relationship_to_other_load_testing_solutions"></a>Relationship to other Load Testing solutions</h2>
-<div class="sectionbody">
-
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;!-- https://mvnrepository.com/artifact/io.github.wfouche.tulip/tulip-runtime --&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;io.github.wfouche.tulip&lt;/groupId&gt;
+    &lt;artifactId&gt;tulip-runtime&lt;/artifactId&gt;
+    &lt;version&gt;2.1.3&lt;/version&gt;
+&lt;/dependency&gt;</code></pre>
 </div>
 </div>
 </article>
